@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmcda:XMCDA xmlns:xmcda="http://www.decision-deck.org/2009/XMCDA-2.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.decision-deck.org/2009/XMCDA-2.0.0
+  http://www.decision-deck.org/xmcda/_downloads/XMCDA-2.0.0.xsd">
+
+
+  <categoriesValues>
+	<categoryValue>
+		<categoryID>c01</categoryID>
+		<value>
+			<interval>
+				<lowerBound><integer>2</integer></lowerBound>
+				<upperBound><integer>6</integer></upperBound>
+			</interval>
+		</value>
+	</categoryValue>
+	<categoryValue>
+		<categoryID>c04</categoryID>
+		<value>
+			<interval>
+				<lowerBound><integer>1</integer></lowerBound>
+			</interval>
+		</value>
+	</categoryValue>
+  </categoriesValues>
+  
+  </xmcda:XMCDA>
+
