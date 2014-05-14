@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <program_description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.decision-deck.org/ws/_downloads/description.xsd">
-	<program provider="KC" name="RORUTADIS-RepresentativeValueFunction" displayName="RORUTADIS-RepresentativeValueFunction" version="0.1"/>
+	<program provider="KC" name="RORUTADIS-RepresentativeValueFunction" displayName="RORUTADIS-RepresentativeValueFunction" version="0.2"/>
     
 	<documentation>         
         <description>
@@ -255,6 +255,27 @@
 			</xmcda>
 		</input>
 
+		<input id="preferenceRelation" name="preferenceRelation" displayName="preferenceRelation" isoptional="1">
+			<documentation>
+                <description>
+					Necessary assignment based preference relation between alternatives.
+				</description>
+			</documentation>
+			<xmcda tag="alternativesComparisons">
+				<![CDATA[
+					<alternativesComparisons>
+						<pairs>
+							<pair>
+								<initial><alternativeID>[...]</alternativeID></initial>
+								<terminal><alternativeID>[...]</alternativeID></terminal>
+							</pair>
+							[...]
+						</pairs>
+					</alternativesComparisons>
+				]]>
+			</xmcda>
+		</input>
+		
 		<output id="messages" name="messages" displayName="messages">
             <documentation>
                 <description>

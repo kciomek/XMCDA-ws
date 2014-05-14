@@ -18,8 +18,9 @@ inputFiles <- c("alternatives.xml",
                 "assignmentComparisons.xml",
                 "categoriesCardinalities.xml",
                 "strictVF.xml",
-                "mode.xml")
-isMandatory <- c(T, T, T, T, F, F, F, T, T)
+                "mode.xml",
+                "preferenceRelation.xml")
+isMandatory <- c(T, T, T, T, F, F, F, T, T, F)
 
 trees <- list()
 setwd(inDirectory)
@@ -35,7 +36,7 @@ for (i in seq_len(length(inputFiles))) {
     if (isMandatory[i])
       trees[[i]] <- paste("Cannot read ", inputFiles[i], ".", sep="")
     else
-      trees[[i]] <- NULL
+      trees[i] <- list(NULL)
   }
   else {
     if (checkXSD(tree) == 0)
@@ -172,6 +173,14 @@ if (length(fileErrors) == 0) {
     else dataError <- data$status
   }
   
+  preferenceRelation <- NULL
+  
+  if (is.null(dataError) && !is.null(trees$preferenceRelation)) {
+    data <- getAlternativesComparisonsValues(trees$preferenceRelation, alternativesIDs)
+    if (data$status == "OK") preferenceRelation <- data[[1]]
+    else dataError <- data$status
+  }
+  
   ############# parameters
   
   if (is.null(dataError)) {
@@ -217,7 +226,7 @@ if (length(fileErrors) == 0) {
       problem$maximalClassCardinalities <-
         categoriesCardinalities[!is.na(categoriesCardinalities[, 3]), -2, drop=FALSE]      
       
-      representativeFunction <- findRepresentativeFunction(problem, mode)
+      representativeFunction <- findRepresentativeFunction(problem, mode, preferenceRelation)
       thresholds <- c(0, getThresholds(problem, representativeFunction))
       thresholds <- cbind(1:nrCategories, thresholds)      
       alternativesUtilityTable <- getMarginalUtilities(problem, representativeFunction)
