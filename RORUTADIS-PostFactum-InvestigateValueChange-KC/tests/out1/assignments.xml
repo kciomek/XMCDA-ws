@@ -49,10 +49,10 @@
       <alternativeID>a05</alternativeID>
       <categoriesInterval>
         <lowerBound>
-          <categoryID>c04</categoryID>
+          <categoryID>c03</categoryID>
         </lowerBound>
         <upperBound>
-          <categoryID>c04</categoryID>
+          <categoryID>c03</categoryID>
         </upperBound>
       </categoriesInterval>
     </alternativeAffectation>

@@ -10,19 +10,19 @@
     <categoryValue>
       <categoryID>c02</categoryID>
       <value>
-        <real>0.350085</real>
+        <real>0.35085</real>
       </value>
     </categoryValue>
     <categoryValue>
       <categoryID>c03</categoryID>
       <value>
-        <real>0.50005</real>
+        <real>0.500500000000001</real>
       </value>
     </categoryValue>
     <categoryValue>
       <categoryID>c04</categoryID>
       <value>
-        <real>0.50015</real>
+        <real>0.501500000000001</real>
       </value>
     </categoryValue>
   </categoriesValues>

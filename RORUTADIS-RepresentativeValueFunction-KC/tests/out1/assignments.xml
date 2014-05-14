@@ -38,10 +38,10 @@
       <alternativeID>a04</alternativeID>
       <categoriesInterval>
         <lowerBound>
-          <categoryID>c03</categoryID>
+          <categoryID>c02</categoryID>
         </lowerBound>
         <upperBound>
-          <categoryID>c03</categoryID>
+          <categoryID>c02</categoryID>
         </upperBound>
       </categoriesInterval>
     </alternativeAffectation>
@@ -60,10 +60,10 @@
       <alternativeID>a06</alternativeID>
       <categoriesInterval>
         <lowerBound>
-          <categoryID>c03</categoryID>
+          <categoryID>c04</categoryID>
         </lowerBound>
         <upperBound>
-          <categoryID>c03</categoryID>
+          <categoryID>c04</categoryID>
         </upperBound>
       </categoriesInterval>
     </alternativeAffectation>
@@ -71,10 +71,10 @@
       <alternativeID>a07</alternativeID>
       <categoriesInterval>
         <lowerBound>
-          <categoryID>c03</categoryID>
+          <categoryID>c04</categoryID>
         </lowerBound>
         <upperBound>
-          <categoryID>c03</categoryID>
+          <categoryID>c04</categoryID>
         </upperBound>
       </categoriesInterval>
     </alternativeAffectation>
