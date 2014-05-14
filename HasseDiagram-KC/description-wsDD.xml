@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <program_description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.decision-deck.org/ws/_downloads/description.xsd">
-	<program provider="KC" name="HasseDiagram" displayName="HasseDiagram" version="0.1"/>
+	<program provider="KC" name="HasseDiagram" displayName="HasseDiagram" version="0.2"/>
     
 	<documentation>         
         <description>
@@ -35,10 +35,10 @@
 			</xmcda>
 		</input>
 		
-		<input id="alternativeComparisons" name="alternativeComparisons" displayName="alternativeComparisons" isoptional="0">
+		<input id="preferenceRelation" name="preferenceRelation" displayName="preferenceRelation" isoptional="0">
 			<documentation>
                 <description>
-					Alternative comparisons.
+					Necessary assignment based preference relation between alternatives.
 				</description>
 			</documentation>
 			<xmcda tag="alternativesComparisons">

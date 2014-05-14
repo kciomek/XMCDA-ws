@@ -12,7 +12,7 @@ outDirectory <- normalizePath(commandArgs()[6])
 errorMessage <- NULL
 
 inputFiles <- c("alternatives.xml",
-                "alternativeComparisons.xml",
+                "preferenceRelation.xml",
                 "parameters.xml")
 isMandatory <- c(T, T, T)
 
@@ -69,7 +69,7 @@ if (length(fileErrors) == 0) {
   comparisons <- NULL
   
   if (is.null(dataError)) {
-    data <- getAlternativesComparisonsValues(trees$alternativeComparisons, alternativesIDs)
+    data <- getAlternativesComparisonsValues(trees$preferenceRelation, alternativesIDs)
     if (data$status == "OK") comparisons <- data[[1]]
     else dataError <- data$status
   }
