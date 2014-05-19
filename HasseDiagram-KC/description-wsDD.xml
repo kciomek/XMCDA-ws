@@ -90,7 +90,7 @@
                     <documentation>
                         <description>Whether to perform transitive reduction.</description>
                     </documentation>
-                    <defaultValue>false</defaultValue>
+                    <defaultValue>true</defaultValue>
                 </entry>
                 <entry id="%3" type="true" displayName="shape">
                     <documentation>
