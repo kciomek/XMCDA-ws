@@ -397,7 +397,7 @@
 					</categoriesValues>
 				]]>
 			</xmcda>
-        </output
+        </output>
 		<output id="assignments" name="assignments" displayName="assignments">
             <documentation>
                 <description>
