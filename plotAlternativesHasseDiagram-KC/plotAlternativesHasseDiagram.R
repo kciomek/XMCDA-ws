@@ -115,7 +115,7 @@ if (length(fileErrors) == 0) {
     tmpErr <- try({
       tmp_out_file <- "tmp_out.png"
       setwd(outDirectory)
-      png(tmp_out_file)
+      png(tmp_out_file, type="cairo")
       hasse(comparisonsMatrix,
             alternativesIDs,
             parameters = list(newpage = FALSE,

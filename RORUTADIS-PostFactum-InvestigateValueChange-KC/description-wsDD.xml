@@ -339,7 +339,7 @@
 					</categoriesValues>
 				]]>
 			</xmcda>
-        </output
+        </output>
 		<output id="assignments" name="assignments" displayName="assignments">
             <documentation>
                 <description>Alternative assignments (for result function where missing utility is the smallest).</description>

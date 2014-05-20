@@ -92,7 +92,7 @@
                     </documentation>
                     <defaultValue>true</defaultValue>
                 </entry>
-                <entry id="%3" type="true" displayName="shape">
+                <entry id="%3" type="enum" displayName="shape">
                     <documentation>
                         <description>Shape of diagram nodes.</description>
                     </documentation>
