@@ -120,7 +120,7 @@ if (length(fileErrors) == 0) {
             alternativesIDs,
             parameters = list(newpage = FALSE,
                               cluster = cluster,
-                              transitiveResuction = transitiveReduction,
+                              transitiveReduction = transitiveReduction,
                               shape = shape,
                               arrows = arrows))
       dev.off()
@@ -133,7 +133,7 @@ if (length(fileErrors) == 0) {
       #      alternativesIDs,
       #      parameters = list(newpage = FALSE,
       #                        cluster = cluster,
-      #                        transitiveResuction = transitiveReduction,
+      #                        transitiveReduction = transitiveReduction,
       #                        shape = shape,
       #                        arrows = arrows))
       #dev.off()
