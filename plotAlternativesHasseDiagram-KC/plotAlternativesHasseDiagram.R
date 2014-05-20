@@ -1,5 +1,5 @@
 # Usage:
-# R --slave --vanilla --args "[inDirectory]" "[outDirectory]" < HasseDiagram.R
+# R --slave --vanilla --args "[inDirectory]" "[outDirectory]" < plotAlternativesHasseDiagram.R
 
 rm(list=ls())
 
