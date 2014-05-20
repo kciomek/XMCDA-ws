@@ -7,14 +7,13 @@ rm -rf $TMPDIR
 for i in ./* ; do
   if [ -d "$i" ]; then
     if [ -d "$i/tests" ]; then
-	  for INDIR in "$i/tests/in*" ; do
+	  echo $(basename $i)
+	  for INDIR in $i/tests/in* ; do
 	    BASE=$(basename $INDIR)
 		ID=${BASE#in}
 		OUTDIR="$(dirname $INDIR)/out$ID"
 		
 		for SCRIPT in "$i/*.R" ; do
-		  echo $(basename $i)
-		  
 		  mkdir $TMPDIR
 		  if [ "$1" == "-s" ]; then
 			R --slave --vanilla --args $INDIR $TMPDIR "<" $SCRIPT > /dev/null 2>/dev/null
