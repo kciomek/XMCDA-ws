@@ -77,14 +77,14 @@
 			<xmcda tag="performanceTable" />
 		</input>
 		
-		<input id="strictVF" name="strictVF" displayName="strictVF" isoptional="0">
+		<input id="strictlyMonotonicValueFunctions" name="strictlyMonotonicValueFunctions" displayName="strictlyMonotonicValueFunctions" isoptional="0">
 			<documentation>
                 <description>Whether marginal value functions strictly monotonic (true) or weakly monotonic (false).</description>
 			</documentation>
 			<xmcda tag="methodParameters">
                 <![CDATA[
                     <methodParameters>
-                        <parameter name="strictVF"> 
+                        <parameter name="strictlyMonotonicValueFunctions"> 
                             <value>
                                 <boolean>%1</boolean>
                             </value>
@@ -94,7 +94,7 @@
             </xmcda>
 			
 			<gui status="preferGUI">
-                <entry id="%1" type="boolean" displayName="strictVF">
+                <entry id="%1" type="boolean" displayName="strictlyMonotonicValueFunctions">
                     <documentation>
                         <description>Whether marginal value functions strictly monotonic or not.</description>
                     </documentation>

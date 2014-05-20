@@ -18,7 +18,7 @@ inputFiles <- c("alternatives.xml",
                 "assignmentComparisons.xml",
                 "categoriesCardinalities.xml",
                 "necessary.xml",
-                "strictVF.xml",
+                "strictlyMonotonicValueFunctions.xml",
                 "alternative.xml",
                 "atLeastToClass.xml",
                 "criteriaManipulability.xml")
@@ -187,7 +187,7 @@ if (length(fileErrors) == 0) {
   }
   
   if (is.null(dataError)) {
-    data <- getParameters(trees$strictVF, "strictVF")
+    data <- getParameters(trees$strictlyMonotonicValueFunctions, "strictVF")
     if (data$status == "OK") strictVF <- data[[1]]
     else dataError <- data$status
   }
