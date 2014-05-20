@@ -17,9 +17,8 @@ inputFiles <- c("alternatives.xml",
                 "assignmentExamples.xml",
                 "assignmentComparisons.xml",
                 "categoriesCardinalities.xml",
-                "necessary.xml",
                 "strictVF.xml")
-isMandatory <- c(T, T, T, T, F, F, F, T, T)
+isMandatory <- c(T, T, T, T, F, F, F, T)
 
 trees <- list()
 setwd(inDirectory)
@@ -178,12 +177,6 @@ if (length(fileErrors) == 0) {
   ############# parameters
   
   if (is.null(dataError)) {
-    data <- getParameters(trees$necessary, "necessary")
-    if (data$status == "OK") necessary <- data[[1]]
-    else dataError <- data$status
-  }
-  
-  if (is.null(dataError)) {
     data <- getParameters(trees$strictVF, "strictVF")
     if (data$status == "OK") strictVF <- data[[1]]
     else dataError <- data$status
@@ -217,7 +210,8 @@ if (length(fileErrors) == 0) {
       problem$maximalClassCardinalities <-
         categoriesCardinalities[!is.na(categoriesCardinalities[, 3]), -2, drop=FALSE]
       
-      alternativesAssignments <- calculateAssignments(problem, necessary)
+      possibleAssignments <- calculateAssignments(problem, FALSE)
+      necessaryAssignments <- calculateAssignments(problem, TRUE)
     })
     
     if (inherits(tmpErr, 'try-error')) {
@@ -234,8 +228,17 @@ if (length(fileErrors) == 0) {
                  suppressNamespaceWarning = TRUE, 
                  namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), 
                  parent = tree)
-      putAlternativesAffectations(tree, alternativesAssignments, alternativesIDs, categoriesIDs, TRUE)
-      saveXML(tree, file = "assignments.xml")
+      putAlternativesAffectations(tree, possibleAssignments, alternativesIDs, categoriesIDs, TRUE)
+      saveXML(tree, file = "possibleAssignments.xml")
+      
+      tree <- newXMLDoc()
+      newXMLNode("xmcda:XMCDA", 
+                 attrs = c("xsi:schemaLocation" = "http://www.decision-deck.org/2009/XMCDA-2.0.0 http://www.decision-deck.org/xmcda/_downloads/XMCDA-2.0.0.xsd"),
+                 suppressNamespaceWarning = TRUE, 
+                 namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), 
+                 parent = tree)
+      putAlternativesAffectations(tree, necessaryAssignments, alternativesIDs, categoriesIDs, TRUE)
+      saveXML(tree, file = "necessaryAssignments.xml")
     }
   }
   else {

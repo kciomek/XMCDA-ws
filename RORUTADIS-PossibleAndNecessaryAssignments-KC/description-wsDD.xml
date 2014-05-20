@@ -77,31 +77,6 @@
 			<xmcda tag="performanceTable" />
 		</input>
 		
-		<input id="necessary" name="necessary" displayName="necessary" isoptional="0">
-			<documentation>
-                <description>Whether necessary or possible assignments should be generated.</description>
-			</documentation>
-			<xmcda tag="methodParameters">
-                <![CDATA[
-                    <methodParameters>
-                        <parameter name="necessary">
-                            <value>
-                                <boolean>%1</boolean>
-                            </value>
-                        </parameter>
-                    </methodParameters>
-                ]]>
-            </xmcda>
-			
-			<gui status="preferGUI">
-                <entry id="%1" type="boolean" displayName="necessary">
-                    <documentation>
-                        <description>Whether necessary or possible assignments.</description>
-                    </documentation>
-                    <defaultValue>false</defaultValue>
-                </entry>
-            </gui>
-		</input>
 		<input id="strictVF" name="strictVF" displayName="strictVF" isoptional="0">
 			<documentation>
                 <description>Whether marginal value functions strictly monotonic (true) or weakly monotonic (false).</description>
@@ -213,9 +188,9 @@
 
 
 
-		<output id="assignments" name="assignments" displayName="assignments">
+		<output id="possibleAssignments" name="possibleAssignments" displayName="possibleAssignments">
             <documentation>
-                <description>Necessary or possible assignments.</description>
+                <description>Possible assignments.</description>
             </documentation>
             <xmcda tag="alternativesAffectations">
 				<![CDATA[
@@ -243,6 +218,34 @@
 								<categoryID>[...]</categoryID>
 								[...]
 							</categoriesSet>
+						</alternativeAffectation>
+						[...]
+					</alternativesAffectations>
+				]]>
+			</xmcda>
+        </output>
+		<output id="necessaryAssignments" name="necessaryAssignments" displayName="necessaryAssignments">
+            <documentation>
+                <description>Necessary assignments.</description>
+            </documentation>
+            <xmcda tag="alternativesAffectations">
+				<![CDATA[
+					<alternativesAffectations>
+						<alternativeAffectation>
+							<alternativeID>[...]</alternativeID>
+							<categoryID>[...]</categoryID>
+						</alternativeAffectation>
+						[...]
+						<alternativeAffectation>
+							<alternativeID>[...]</alternativeID>
+							<categoriesInterval>
+								<lowerBound>
+									<categoryID>[...]</categoryID>
+								</lowerBound>
+								<upperBound>
+									<categoryID>[...]</categoryID>
+								</upperBound>
+							</categoriesInterval>
 						</alternativeAffectation>
 						[...]
 					</alternativesAffectations>
