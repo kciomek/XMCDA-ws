@@ -36,9 +36,9 @@ for (i in seq_len(length(inputFiles))) {
     if (inherits(tmpErr, 'try-error')) {
       trees[[i]] <- paste("Error reading file ", inputFiles[i],": ", gsub("\n$", "", tmpErr[1]), sep = "")
     } else if (checkXSD(tree) == 0) {
-        trees[[i]] <- paste(inputFiles[i], " is not XMCDA valid.", sep="")
+      trees[[i]] <- paste(inputFiles[i], " is not XMCDA valid.", sep="")
     } else {
-        trees[[i]] <- tree
+      trees[[i]] <- tree
     }
   } else {
     if (isMandatory[i]) {
@@ -176,6 +176,8 @@ if (length(fileErrors) == 0) {
     else dataError <- data$status
   }
   
+  #### preferenceRelation
+  
   preferenceRelation <- NULL
   
   if (is.null(dataError) && !is.null(trees$preferenceRelation)) {
@@ -229,26 +231,43 @@ if (length(fileErrors) == 0) {
       problem$maximalClassCardinalities <-
         categoriesCardinalities[!is.na(categoriesCardinalities[, 3]), -2, drop=FALSE]      
       
-      representativeFunction <- findRepresentativeFunction(problem, mode, preferenceRelation)
-      thresholds <- c(0, getThresholds(problem, representativeFunction))
-      thresholds <- cbind(1:nrCategories, thresholds)      
-      alternativesUtilityTable <- getMarginalUtilities(problem, representativeFunction)
-      rownames(alternativesUtilityTable) <- alternativesIDs
-      colnames(alternativesUtilityTable) <- criteriaIDs
-      criteriaFunctions <- getCharacteristicPoints(problem, representativeFunction)
-      names(criteriaFunctions) <- criteriaIDs
-      assignments <- getAssignments(problem, representativeFunction)
-      assignmentsMatrix <- matrix(data = FALSE, nrow = nrAlternatives, ncol = nrCategories)
-      for (i in seq_len(length(assignments))) {
-        assignmentsMatrix[i, assignments[i]] <- TRUE
+      if (is.null(preferenceRelation)) {
+        preferenceRelationMatrix <- NULL
+      } else {
+        preferenceRelationMatrix <- matrix(data = c(FALSE),
+                                           ncol = nrAlternatives,
+                                           nrow = nrAlternatives)
+        
+        for (i in seq_len(nrow(preferenceRelation))) {
+          preferenceRelationMatrix[preferenceRelation[i, 1],
+                                   preferenceRelation[i, 2]] <- TRUE
+        }
+      }
+      
+      representativeFunction <- findRepresentativeFunction(problem, mode, preferenceRelationMatrix)
+      
+      if(!is.null(representativeFunction)) {
+        thresholds <- c(0, getThresholds(problem, representativeFunction))
+        thresholds <- cbind(1:nrCategories, thresholds)
+        alternativesUtilityTable <- getMarginalUtilities(problem, representativeFunction)
+        rownames(alternativesUtilityTable) <- alternativesIDs
+        colnames(alternativesUtilityTable) <- criteriaIDs
+        criteriaFunctions <- getCharacteristicPoints(problem, representativeFunction)
+        names(criteriaFunctions) <- criteriaIDs
+        assignments <- getAssignments(problem, representativeFunction)
+        assignmentsMatrix <- matrix(data = FALSE, nrow = nrAlternatives, ncol = nrCategories)
+        for (i in seq_len(length(assignments))) {
+          assignmentsMatrix[i, assignments[i]] <- TRUE
+        }
       }
     })
     
     if (inherits(tmpErr, 'try-error')) {
       # Execution error.
       errorMessage <- paste("Execution error: ", gsub("\n$", "", gsub("^.*: ", "", tmpErr[1])), sep = "")
-    }
-    else {
+    } else if (is.null(representativeFunction)) {
+      errorMessage <- "Representative function not found."
+    } else {
       # Success.
       setwd(outDirectory)
       
