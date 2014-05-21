@@ -17,7 +17,7 @@ inputFiles <- c("alternatives.xml",
                 "assignmentExamples.xml",
                 "assignmentComparisons.xml",
                 "categoriesCardinalities.xml",
-                "strictVF.xml")
+                "strictlyMonotonicValueFunctions.xml")
 isMandatory <- c(T, T, T, T, F, F, F, T)
 
 trees <- list()
@@ -26,21 +26,24 @@ setwd(inDirectory)
 for (i in seq_len(length(inputFiles))) {
   tree <- NULL
   
-  tmpErr <- try({
-    tree <- xmlTreeParse(inputFiles[i], useInternalNodes=TRUE)
-  })
-  
-  if (inherits(tmpErr, 'try-error')) {
-    if (isMandatory[i])
-      trees[[i]] <- paste("Cannot read ", inputFiles[i], ".", sep="")
-    else
-      trees[[i]] <- NULL
-  }
-  else {
-    if (checkXSD(tree) == 0)
-      trees[[i]] <- paste(inputFiles[i], " is not XMCDA valid.", sep="")
-    else
-      trees[[i]] <- tree
+  if (file.exists(inputFiles[i])) {  
+    tmpErr <- try({
+      tree <- xmlTreeParse(inputFiles[i], useInternalNodes=TRUE)
+    })
+    
+    if (inherits(tmpErr, 'try-error')) {
+      trees[[i]] <- paste("Error reading file ", inputFiles[i],": ", gsub("\n$", "", tmpErr[1]), sep = "")
+    } else if (checkXSD(tree) == 0) {
+        trees[[i]] <- paste(inputFiles[i], " is not XMCDA valid.", sep="")
+    } else {
+        trees[[i]] <- tree
+    }
+  } else {
+    if (isMandatory[i]) {
+      trees[[i]] <- paste("Missing file: ", inputFiles[i], ".", sep="")
+    } else {
+      trees[i] <- list(NULL)
+    }
   }
 }
 
@@ -174,7 +177,7 @@ if (length(fileErrors) == 0) {
   ############# parameters
   
   if (is.null(dataError)) {
-    data <- getParameters(trees$strictVF, "strictVF")
+    data <- getParameters(trees$strictlyMonotonicValueFunctions, "strictVF")
     if (data$status == "OK") strictVF <- data[[1]]
     else dataError <- data$status
   }

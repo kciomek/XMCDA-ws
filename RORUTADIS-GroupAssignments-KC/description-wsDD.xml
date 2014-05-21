@@ -3,11 +3,7 @@
 	<program provider="KC" name="RORUTADIS-GroupAssignments" displayName="RORUTADIS-GroupAssignments" version="0.1"/>
     
 	<documentation>         
-        <description>
-			This service allows to merge different assignments, e.g. from various decision makers (group result, group assignment).
-		
-			Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).
-        </description>
+        <description>This service allows to merge different assignments, e.g. from various decision makers (group result, group assignment). Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>
         <contact>
 			Krzysztof Ciomek (k.ciomek@gmail.com),
 			Milosz Kadzinski (milosz.kadzinski@cs.put.poznan.pl)
@@ -19,9 +15,7 @@
     <parameters>
 		<input id="alternatives" name="alternatives" displayName="alternatives" isoptional="0">
 			<documentation>
-                <description>
-					A list of alternatives.
-				</description>
+                <description>A list of alternatives.</description>
 			</documentation>
 			<xmcda tag="alternatives">
 				<![CDATA[
@@ -36,9 +30,7 @@
 		</input>
 		<input id="categories" name="categories" displayName="categories" isoptional="0">
 			<documentation>
-                <description>
-					A list of categories (classes). List must be sorted from the worst category to the best.
-				</description>
+                <description>A list of categories (classes). List must be sorted from the worst category to the best.</description>
 			</documentation>
 			<xmcda tag="categories">
 				<![CDATA[
@@ -52,9 +44,7 @@
 		
 		<input id="necessary" name="necessary" displayName="necessary" isoptional="0">
 			<documentation>
-                <description>
-					Method of merging. Necessary - alternative "a" will be assigned to class "C" in group result iff "a" is assigned to "C" for all decision makers, possible - alternative "a" will be assigned to class "C" in group result iff "a" is assigned to "C" for at least one decision maker.
-				</description>
+                <description>Method of merging. Necessary - alternative "a" will be assigned to class "C" in group result iff "a" is assigned to "C" for all decision makers, possible - alternative "a" will be assigned to class "C" in group result iff "a" is assigned to "C" for at least one decision maker.</description>
 			</documentation>
 			<xmcda tag="methodParameters">
                 <![CDATA[
@@ -71,9 +61,7 @@
 			<gui status="preferGUI">
                 <entry id="%1" type="boolean" displayName="necessary">
                     <documentation>
-                        <description>
-							Whether necessary or possible merge method.
-						</description>
+                        <description>Whether necessary or possible merge method.</description>
                     </documentation>
                     <defaultValue>true</defaultValue>
                 </entry>
@@ -82,9 +70,7 @@
 		
 		<input id="assignments1" name="assignments1" displayName="assignments1" isoptional="0">
 			<documentation>
-                <description>
-					Assignments to merge.
-				</description>
+                <description>Assignments to merge.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations">
 				<![CDATA[
@@ -120,74 +106,52 @@
 		</input>
 		<input id="assignments2" name="assignments2" displayName="assignments2" isoptional="1">
 			<documentation>
-                <description>
-					Assignments to merge.
-				</description>
+                <description>Assignments to merge.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations" />
 		</input>
 		<input id="assignments3" name="assignments3" displayName="assignments3" isoptional="1">
 			<documentation>
-                <description>
-					Assignments to merge.
-				</description>
+                <description>Assignments to merge.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations" />
 		</input>
 		<input id="assignments4" name="assignments4" displayName="assignments4" isoptional="1">
 			<documentation>
-                <description>
-					Assignments to merge.
-				</description>
+                <description>Assignments to merge.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations" />
 		</input>
 		<input id="assignments5" name="assignments5" displayName="assignments5" isoptional="1">
 			<documentation>
-                <description>
-					Assignments to merge.
-				</description>
+                <description>Assignments to merge.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations" />
 		</input>
 		<input id="assignments6" name="assignments6" displayName="assignments6" isoptional="1">
 			<documentation>
-                <description>
-					Assignments to merge.
-				</description>
+                <description>Assignments to merge.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations" />
 		</input>
 		<input id="assignments7" name="assignments7" displayName="assignments7" isoptional="1">
 			<documentation>
-                <description>
-					Assignments to merge.
-				</description>
+                <description>Assignments to merge.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations" />
 		</input>
 		<input id="assignments8" name="assignments8" displayName="assignments8" isoptional="1">
 			<documentation>
-                <description>
-					Assignments to merge.
-				</description>
+                <description>Assignments to merge.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations" />
 		</input>
 
-		<output id="messages" name="messages" displayName="messages">
-            <documentation>
-                <description>
-					Messages generated by the program.
-				</description>
-            </documentation>
-            <xmcda tag="methodMessages"/>
-        </output>
+
+
 		<output id="assignments" name="assignments" displayName="assignments">
             <documentation>
-                <description>
-					Merged assignments.
-				</description>
+                <description>Merged assignments.</description>
             </documentation>
             <xmcda tag="alternativesAffectations">
 				<![CDATA[
@@ -220,6 +184,12 @@
 					</alternativesAffectations>
 				]]>
 			</xmcda>
+        </output>
+		<output id="messages" name="messages" displayName="messages">
+            <documentation>
+                <description>Messages generated by the program.</description>
+            </documentation>
+            <xmcda tag="methodMessages"/>
         </output>
 	</parameters>
 </program_description>

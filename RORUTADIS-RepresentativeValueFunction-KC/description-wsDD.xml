@@ -3,15 +3,7 @@
 	<program provider="KC" name="RORUTADIS-RepresentativeValueFunction" displayName="RORUTADIS-RepresentativeValueFunction" version="0.2"/>
     
 	<documentation>         
-        <description>
-			Robust Ordinal Regression for value-based sorting:
-			
-			RORUTADIS-RepresentativeValueFunction service finds representative function.
-			
-			It is possible to provide an additional optional preference information: example alternatives assignments, assignment pairwise comparisons and desired class cardinalities.
-		
-			Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).
-        </description>
+        <description>Robust Ordinal Regression for value-based sorting: RORUTADIS-RepresentativeValueFunction service finds representative function. It is possible to provide an additional optional preference information: example alternatives assignments, assignment pairwise comparisons and desired class cardinalities. Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>
         <contact>
 			Krzysztof Ciomek (k.ciomek@gmail.com),
 			Milosz Kadzinski (milosz.kadzinski@cs.put.poznan.pl)
@@ -23,9 +15,7 @@
     <parameters>
 		<input id="alternatives" name="alternatives" displayName="alternatives" isoptional="0">
 			<documentation>
-                <description>
-					A list of alternatives.
-				</description>
+                <description>A list of alternatives.</description>
 			</documentation>
 			<xmcda tag="alternatives">
 				<![CDATA[
@@ -40,9 +30,7 @@
 		</input>
 		<input id="categories" name="categories" displayName="categories" isoptional="0">
 			<documentation>
-                <description>
-					A list of categories (classes). List must be sorted from the worst category to the best.
-				</description>
+                <description>A list of categories (classes). List must be sorted from the worst category to the best.</description>
 			</documentation>
 			<xmcda tag="categories">
 				<![CDATA[
@@ -55,9 +43,7 @@
 		</input>
 		<input id="criteria" name="criteria" displayName="criteria" isoptional="0">
 			<documentation>
-                <description>
-					A list of criteria (&lt;criteria&gt; tag) with information about preference direction (&lt;criteriaValues mcdaConcept="preferenceDirection"&gt;, 0 - gain, 1 - cost) and number of characteristic points (&lt;criteriaValues mcdaConcept="numberOfCharacteristicPoints"&gt;, 0 for the most general marginal utility function or integer grater or equal to 2) of each criterion.
-				</description>
+                <description>A list of criteria (&lt;criteria&gt; tag) with information about preference direction (&lt;criteriaValues mcdaConcept="preferenceDirection"&gt;, 0 - gain, 1 - cost) and number of characteristic points (&lt;criteriaValues mcdaConcept="numberOfCharacteristicPoints"&gt;, 0 for the most general marginal utility function or integer grater or equal to 2) of each criterion.</description>
 			</documentation>
 			<xmcda tag="criteria">
 				<![CDATA[
@@ -86,23 +72,19 @@
 		</input>
 		<input id="performanceTable" name="performanceTable" displayName="performanceTable" isoptional="0">
 			<documentation>
-                <description>
-					The performances of the alternatives.
-				</description>
+                <description>The performances of the alternatives.</description>
 			</documentation>
 			<xmcda tag="performanceTable" />
 		</input>
 		
-		<input id="strictVF" name="strictVF" displayName="strictVF" isoptional="0">
+		<input id="strictlyMonotonicValueFunctions" name="strictlyMonotonicValueFunctions" displayName="strictlyMonotonicValueFunctions" isoptional="0">
 			<documentation>
-                <description>
-					Whether marginal value functions strictly monotonic (true) or weakly monotonic (false).
-				</description>
+                <description>Whether marginal value functions strictly monotonic (true) or weakly monotonic (false).</description>
 			</documentation>
 			<xmcda tag="methodParameters">
                 <![CDATA[
                     <methodParameters>
-                        <parameter name="strictVF"> 
+                        <parameter name="strictlyMonotonicValueFunctions"> 
                             <value>
                                 <boolean>%1</boolean>
                             </value>
@@ -112,11 +94,9 @@
             </xmcda>
 			
 			<gui status="preferGUI">
-                <entry id="%1" type="boolean" displayName="strictVF">
+                <entry id="%1" type="boolean" displayName="strictlyMonotonicValueFunctions">
                     <documentation>
-                        <description>
-							Whether marginal value functions strictly monotonic or not.
-						</description>
+                        <description>Whether marginal value functions strictly monotonic or not.</description>
                     </documentation>
                     <defaultValue>false</defaultValue>
                 </entry>
@@ -124,9 +104,7 @@
 		</input>
 		<input id="mode" name="mode" displayName="mode" isoptional="0">
 			<documentation>
-                <description>
-					A method of a computing representative utility function: choose between "iterative" and "compromise".
-				</description>
+                <description>A method of a computing representative utility function: choose between "iterative" and "compromise".</description>
 			</documentation>
 			<xmcda tag="methodParameters">
                 <![CDATA[
@@ -143,9 +121,7 @@
 			<gui status="preferGUI">
                 <entry id="%1" type="enum" displayName="mode">
                     <documentation>
-                        <description>
-							A method of a computing representative utility function.
-						</description>
+                        <description>A method of a computing representative utility function.</description>
                     </documentation>
 					<items>
 						<item id="iterative">
@@ -164,9 +140,7 @@
 		
 		<input id="assignmentExamples" name="assignmentExamples" displayName="assignmentExamples" isoptional="1">
 			<documentation>
-                <description>
-					A list of assignment examples of alternatives to intervals of categories (classes) or to a specific category (class).
-				</description>
+                <description>A list of assignment examples of alternatives to intervals of categories (classes) or to a specific category (class).</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations">
 				<![CDATA[
@@ -202,13 +176,7 @@
 		</input>
 		<input id="assignmentComparisons" name="assignmentComparisons" displayName="assignmentComparisons" isoptional="1">
 			<documentation>
-                <description>
-					Two lists of assignment pairwise comparisons.
-					
-					A comparison from list with attribute mcdaConcept="atLeastAsGoodAs" indicates that some alternative should be assigned to class at least as good as class of some other alternative (k = 0) or at least better by k classes (k &gt; 0).
-					
-					A comparison from list with attribute mcdaConcept="atMostAsGoodAs" indicates that some alternative should be assigned to class at most better by k classes (k &gt; 0) then some other alternative.
-				</description>
+                <description>Two lists of assignment pairwise comparisons. A comparison from list with attribute mcdaConcept="atLeastAsGoodAs" indicates that some alternative should be assigned to class at least as good as class of some other alternative (k = 0) or at least better by k classes (k &gt; 0). A comparison from list with attribute mcdaConcept="atMostAsGoodAs" indicates that some alternative should be assigned to class at most better by k classes (k &gt; 0) then some other alternative.</description>
 			</documentation>
 			<xmcda tag="alternativesComparisons">
 				<![CDATA[
@@ -233,9 +201,7 @@
 		</input>
 		<input id="categoriesCardinalities" name="categoriesCardinalities" displayName="categoriesCardinalities" isoptional="1">
 			<documentation>
-                <description>
-					A list of category (class) cardinality constraints. It allows to define minimal and/or maximal desired category (class) cardinalities.
-				</description>
+                <description>A list of category (class) cardinality constraints. It allows to define minimal and/or maximal desired category (class) cardinalities.</description>
 			</documentation>
 			<xmcda tag="categoriesValues">
 				<![CDATA[
@@ -257,9 +223,7 @@
 
 		<input id="preferenceRelation" name="preferenceRelation" displayName="preferenceRelation" isoptional="1">
 			<documentation>
-                <description>
-					Necessary assignment based preference relation between alternatives.
-				</description>
+                <description>Necessary assignment based preference relation between alternatives.</description>
 			</documentation>
 			<xmcda tag="alternativesComparisons">
 				<![CDATA[
@@ -276,28 +240,18 @@
 			</xmcda>
 		</input>
 		
-		<output id="messages" name="messages" displayName="messages">
-            <documentation>
-                <description>
-					Messages generated by the program.
-				</description>
-            </documentation>
-            <xmcda tag="methodMessages" />
-        </output>
+
+
 		
 		<output id="alternativesValuesTable" name="alternativesValuesTable" displayName="alternativesValuesTable">
             <documentation>
-                <description>
-					Marginal utility values of alternatives for found representative function.
-				</description>
+                <description>Marginal utility values of alternatives for found representative function.</description>
             </documentation>
             <xmcda tag="performanceTable" />
         </output>
 		<output id="marginalValueFunctions" name="marginalValueFunctions" displayName="marginalValueFunctions">
             <documentation>
-                <description>
-					Marginal value functions for found representative function.
-				</description>
+                <description>Marginal value functions for found representative function.</description>
             </documentation>
             <xmcda tag="criteria">
 				<![CDATA[
@@ -320,9 +274,7 @@
         </output>
 		<output id="thresholds" name="thresholds" displayName="thresholds">
             <documentation>
-                <description>
-					Lower threshold for each category (class) for found representative function.
-				</description>
+                <description>Lower threshold for each category (class) for found representative function.</description>
             </documentation>
             <xmcda tag="categoriesValues">
 				<![CDATA[
@@ -340,9 +292,7 @@
         </output>
 		<output id="assignments" name="assignments" displayName="assignments">
             <documentation>
-                <description>
-					Alternative assignments for found representative function.
-				</description>
+                <description>Alternative assignments for found representative function.</description>
             </documentation>
             <xmcda tag="alternativesAffectations">
 				<![CDATA[
@@ -375,6 +325,12 @@
 					</alternativesAffectations>
 				]]>
 			</xmcda>
+        </output>
+		<output id="messages" name="messages" displayName="messages">
+            <documentation>
+                <description>Messages generated by the program.</description>
+            </documentation>
+            <xmcda tag="methodMessages"/>
         </output>
 	</parameters>
 </program_description>
