@@ -187,7 +187,7 @@ if (length(fileErrors) == 0) {
   }
   
   if (is.null(dataError)) {
-    data <- getParameters(trees$strictlyMonotonicValueFunctions, "strictVF")
+    data <- getParameters(trees$strictlyMonotonicValueFunctions, "strictlyMonotonicValueFunctions")
     if (data$status == "OK") strictVF <- data[[1]]
     else dataError <- data$status
   }

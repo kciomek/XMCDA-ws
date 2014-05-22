@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.decision-deck.org/2009/XMCDA-2.0.0 http://www.decision-deck.org/xmcda/_downloads/XMCDA-2.0.0.xsd">
 	
 	<methodParameters>
-		<parameter name="strictVF">
+		<parameter name="strictlyMonotonicValueFunctions">
 			<value><boolean>false</boolean></value>
 		</parameter>
 	</methodParameters>
