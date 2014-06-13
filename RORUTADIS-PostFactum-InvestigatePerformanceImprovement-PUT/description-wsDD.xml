@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <program_description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.decision-deck.org/ws/_downloads/description.xsd">
-	<program provider="KC" name="RORUTADIS-PossibleAndNecessaryAssignments" displayName="RORUTADIS-PossibleAndNecessaryAssignments" version="0.1"/>
+	<program provider="PUT" name="RORUTADIS-PostFactum-InvestigatePerformanceImprovement" displayName="RORUTADIS-PostFactum-InvestigatePerformanceImprovement" version="0.1"/>
     
 	<documentation>         
-        <description>Calculates possible and necessary assignments of alternatives to classes (categories) using Robust Ordinal Regression for value-based sorting. It is possible to provide an additional optional preference information: example alternatives assignments, assignment pairwise comparisons and desired class cardinalities. Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>
+        <description>Robust Ordinal Regression for value-based sorting: RORUTADIS-PostFactum-InvestigatePerformanceImprovement service calculates minimal value (rho) by which alternative evaluations on selected criteria have to be multiplied for that alternative to be possibly (or necessarily) assigned to at least some specific class (rho &gt;= 1). Note! This function works for problems with only positive alternative evaluations It is possible to provide an additional optional preference information: example alternatives assignments, assignment pairwise comparisons and desired class cardinalities. Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>
         <contact>
 			Krzysztof Ciomek (k.ciomek@gmail.com),
 			Milosz Kadzinski (milosz.kadzinski@cs.put.poznan.pl)
@@ -77,6 +77,31 @@
 			<xmcda tag="performanceTable" />
 		</input>
 		
+		<input id="necessary" name="necessary" displayName="necessary" isoptional="0">
+			<documentation>
+                <description>Whether necessary or possible assignments should be considered.</description>
+			</documentation>
+			<xmcda tag="methodParameters">
+                <![CDATA[
+                    <methodParameters>
+                        <parameter name="necessary">
+                            <value>
+                                <boolean>%1</boolean>
+                            </value>
+                        </parameter>
+                    </methodParameters>
+                ]]>
+            </xmcda>
+			
+			<gui status="preferGUI">
+                <entry id="%1" type="boolean" displayName="necessary">
+                    <documentation>
+                        <description>Whether necessary or possible assignments to consider.</description>
+                    </documentation>
+                    <defaultValue>false</defaultValue>
+                </entry>
+            </gui>
+		</input>
 		<input id="strictlyMonotonicValueFunctions" name="strictlyMonotonicValueFunctions" displayName="strictlyMonotonicValueFunctions" isoptional="0">
 			<documentation>
                 <description>Whether marginal value functions strictly monotonic (true) or weakly monotonic (false).</description>
@@ -101,6 +126,70 @@
                     <defaultValue>false</defaultValue>
                 </entry>
             </gui>
+		</input>
+		
+		
+		<input id="alternative" name="alternative" displayName="alternative" isoptional="0">
+			<documentation>
+                <description>An alternative for assignment improvement.</description>
+			</documentation>
+			<xmcda tag="methodParameters">
+                <![CDATA[
+                    <methodParameters>
+						<parameter name="alternative">
+							<value><label>%1</label></value>
+						</parameter>
+					</methodParameters>
+                ]]>
+            </xmcda>
+			
+			<gui status="preferGUI">
+                <entry id="%1" type="string" displayName="alternative">
+                    <documentation>
+                        <description>An identifier of alternative for assignment improvement.</description>
+                    </documentation>
+                </entry>
+            </gui>
+		</input>
+		
+		<input id="atLeastToClass" name="atLeastToClass" displayName="atLeastToClass" isoptional="0">
+			<documentation>
+                <description>A category of assignment to investigate.</description>
+			</documentation>
+			<xmcda tag="methodParameters">
+                <![CDATA[
+                    <methodParameters>
+						<parameter name="atLeastToClass">
+							<value><label>%1</label></value>
+						</parameter>
+					</methodParameters>
+                ]]>
+            </xmcda>
+			
+			<gui status="preferGUI">
+                <entry id="%1" type="string" displayName="atLeastToClass">
+                    <documentation>
+                        <description>An identifier of category of assignment to investigate.</description>
+                    </documentation>
+                </entry>
+            </gui>
+		</input>
+		
+		<input id="criteriaManipulability" name="criteriaManipulability" displayName="criteriaManipulability" isoptional="0">
+			<documentation>
+                <description>A list of criteria values which denote whether multiplying by rho on corresponding criterion is allowed (value 1) or not (value 0). Values for all criteria have to be provided and at least one criterion has to be available for manipulation.</description>
+			</documentation>
+			<xmcda tag="criteriaValues">
+				<![CDATA[
+					<criteriaValues>
+						<criterionValue>
+							<criterionID>[...]</criterionID>
+							<value><integer>[0|1]</integer></value>
+						</criterionValue>
+						[...]
+					</criteriaValues>
+				]]>
+			</xmcda>
 		</input>
 		
 		<input id="assignmentExamples" name="assignmentExamples" displayName="assignmentExamples" isoptional="1">
@@ -188,67 +277,18 @@
 
 
 
-		<output id="possibleAssignments" name="possibleAssignments" displayName="possibleAssignments">
+		<output id="value" name="value" displayName="value">
             <documentation>
-                <description>Possible assignments.</description>
+                <description>Improvement value (value of rho).</description>
             </documentation>
-            <xmcda tag="alternativesAffectations">
+            <xmcda tag="alternativeValue">
 				<![CDATA[
-					<alternativesAffectations>
-						<alternativeAffectation>
-							<alternativeID>[...]</alternativeID>
-							<categoryID>[...]</categoryID>
-						</alternativeAffectation>
-						[...]
-						<alternativeAffectation>
-							<alternativeID>[...]</alternativeID>
-							<categoriesInterval>
-								<lowerBound>
-									<categoryID>[...]</categoryID>
-								</lowerBound>
-								<upperBound>
-									<categoryID>[...]</categoryID>
-								</upperBound>
-							</categoriesInterval>
-						</alternativeAffectation>
-						[...]
-						<alternativeAffectation>
-							<alternativeID>[...]</alternativeID>
-							<categoriesSet>
-								<categoryID>[...]</categoryID>
-								[...]
-							</categoriesSet>
-						</alternativeAffectation>
-						[...]
-					</alternativesAffectations>
-				]]>
-			</xmcda>
-        </output>
-		<output id="necessaryAssignments" name="necessaryAssignments" displayName="necessaryAssignments">
-            <documentation>
-                <description>Necessary assignments.</description>
-            </documentation>
-            <xmcda tag="alternativesAffectations">
-				<![CDATA[
-					<alternativesAffectations>
-						<alternativeAffectation>
-							<alternativeID>[...]</alternativeID>
-							<categoryID>[...]</categoryID>
-						</alternativeAffectation>
-						[...]
-						<alternativeAffectation>
-							<alternativeID>[...]</alternativeID>
-							<categoriesInterval>
-								<lowerBound>
-									<categoryID>[...]</categoryID>
-								</lowerBound>
-								<upperBound>
-									<categoryID>[...]</categoryID>
-								</upperBound>
-							</categoriesInterval>
-						</alternativeAffectation>
-						[...]
-					</alternativesAffectations>
+					<alternativeValue mcdaConcept="improvementValue">
+						<alternativeID>[...]</alternativeID>
+						<value>
+							<real>[...]</real>
+						</value>
+					</alternativeValue>
 				]]>
 			</xmcda>
         </output>

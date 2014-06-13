@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <program_description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.decision-deck.org/ws/_downloads/description.xsd">
-	<program provider="KC" name="RORUTADIS-ExtremeClassCardinalities" displayName="RORUTADIS-ExtremeClassCardinalities" version="0.1"/>
+	<program provider="PUT" name="RORUTADIS-ExtremeClassCardinalities" displayName="RORUTADIS-ExtremeClassCardinalities" version="0.1"/>
     
 	<documentation>         
         <description>Robust Ordinal Regression for value-based sorting: RORUTADIS-ExtremeClassCardinalities calculates minimal and maximal possible cardinality of each category (class). It is possible to provide an additional optional preference information: example alternatives assignments, assignment pairwise comparisons and desired class cardinalities. Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <program_description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.decision-deck.org/ws/_downloads/description.xsd">
-	<program provider="KC" name="RORUTADIS-NecessaryAssignment-basedPreferenceRelation" displayName="RORUTADIS-NecessaryAssignment-basedPreferenceRelation" version="0.1"/>
+	<program provider="PUT" name="RORUTADIS-RepresentativeValueFunction" displayName="RORUTADIS-RepresentativeValueFunction" version="0.2"/>
     
 	<documentation>         
-        <description>Compares necessary assignments of alternatives using Robust Ordinal Regression for value-based sorting. It is possible to provide an additional optional preference information: example alternatives assignments, assignment pairwise comparisons and desired class cardinalities. Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>
+        <description>Robust Ordinal Regression for value-based sorting: RORUTADIS-RepresentativeValueFunction service finds representative function. It is possible to provide an additional optional preference information: example alternatives assignments, assignment pairwise comparisons and desired class cardinalities. Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>
         <contact>
 			Krzysztof Ciomek (k.ciomek@gmail.com),
 			Milosz Kadzinski (milosz.kadzinski@cs.put.poznan.pl)
@@ -102,6 +102,41 @@
                 </entry>
             </gui>
 		</input>
+		<input id="mode" name="mode" displayName="mode" isoptional="0">
+			<documentation>
+                <description>A method of a computing representative utility function: choose between "iterative" and "compromise".</description>
+			</documentation>
+			<xmcda tag="methodParameters">
+                <![CDATA[
+                    <methodParameters>
+                        <parameter name="mode">
+                            <value>
+                                <label>%1</label>
+                            </value>
+                        </parameter>
+                    </methodParameters>
+                ]]>
+            </xmcda>
+			
+			<gui status="preferGUI">
+                <entry id="%1" type="enum" displayName="mode">
+                    <documentation>
+                        <description>A method of a computing representative utility function.</description>
+                    </documentation>
+					<items>
+						<item id="iterative">
+							<description>Iterative</description>
+							<value>iterative</value>
+						</item>
+						<item id="compromise">
+							<description>Compromise</description>
+							<value>compromise</value>
+						</item>
+                    </items>
+                    <defaultValue>iterative</defaultValue>
+                </entry>
+            </gui>
+		</input>
 		
 		<input id="assignmentExamples" name="assignmentExamples" displayName="assignmentExamples" isoptional="1">
 			<documentation>
@@ -186,30 +221,108 @@
 			</xmcda>
 		</input>
 
-
-
-		<output id="assignmentComparisons" name="assignmentComparisons" displayName="assignmentComparisons">
-            <documentation>
-                <description>Necessary assignment comparisons. This output is compatible with assignmentComparisons input for various RORUTADIS-... services. Possible to visualize with HasseDiagram service.</description>
-            </documentation>
-            <xmcda tag="alternativesComparisons">
+		<input id="preferenceRelation" name="preferenceRelation" displayName="preferenceRelation" isoptional="1">
+			<documentation>
+                <description>Necessary assignment based preference relation between alternatives.</description>
+			</documentation>
+			<xmcda tag="alternativesComparisons">
 				<![CDATA[
-					<alternativesComparisons mcdaConcept="atLeastAsGoodAs">
+					<alternativesComparisons>
 						<pairs>
 							<pair>
-								<initial>
-									<alternativeID>[...]</alternativeID>
-								</initial>
-								<terminal>
-									<alternativeID>[...]</alternativeID>
-								</terminal>
-								<value>
-									<real>0</real>
-								</value>
+								<initial><alternativeID>[...]</alternativeID></initial>
+								<terminal><alternativeID>[...]</alternativeID></terminal>
 							</pair>
-							...
+							[...]
 						</pairs>
-					<alternativesComparisons/>
+					</alternativesComparisons>
+				]]>
+			</xmcda>
+		</input>
+		
+
+
+		
+		<output id="alternativesValuesTable" name="alternativesValuesTable" displayName="alternativesValuesTable">
+            <documentation>
+                <description>Marginal utility values of alternatives for found representative function.</description>
+            </documentation>
+            <xmcda tag="performanceTable" />
+        </output>
+		<output id="marginalValueFunctions" name="marginalValueFunctions" displayName="marginalValueFunctions">
+            <documentation>
+                <description>Marginal value functions for found representative function.</description>
+            </documentation>
+            <xmcda tag="criteria">
+				<![CDATA[
+					<criteria>
+						<criterion id="[...]">
+							<criterionFunction>
+								<points>
+									<point>
+										<abscissa><real>[...]</real></abscissa>
+										<ordinate><real>[...]</real></ordinate>
+									</point>
+									[...]
+								</points>
+							</criterionFunction>
+						</criterion>
+						[...]
+					</criteria>
+				]]>
+			</xmcda>
+        </output>
+		<output id="thresholds" name="thresholds" displayName="thresholds">
+            <documentation>
+                <description>Lower threshold for each category (class) for found representative function.</description>
+            </documentation>
+            <xmcda tag="categoriesValues">
+				<![CDATA[
+					<categoriesValues mcdaConcept="thresholds">
+						<categoryValue>
+							<categoryID>[...]</categoryID>
+							<value>
+								<real>[...]</real>
+							</value>
+						</categoryValue>
+						[...]
+					</categoriesValues>
+				]]>
+			</xmcda>
+        </output>
+		<output id="assignments" name="assignments" displayName="assignments">
+            <documentation>
+                <description>Alternative assignments for found representative function.</description>
+            </documentation>
+            <xmcda tag="alternativesAffectations">
+				<![CDATA[
+					<alternativesAffectations>
+						<alternativeAffectation>
+							<alternativeID>[...]</alternativeID>
+							<categoryID>[...]</categoryID>
+						</alternativeAffectation>
+						[...]
+						<alternativeAffectation>
+							<alternativeID>[...]</alternativeID>
+							<categoriesInterval>
+								<lowerBound>
+									<categoryID>[...]</categoryID>
+								</lowerBound>
+								<upperBound>
+									<categoryID>[...]</categoryID>
+								</upperBound>
+							</categoriesInterval>
+						</alternativeAffectation>
+						[...]
+						<alternativeAffectation>
+							<alternativeID>[...]</alternativeID>
+							<categoriesSet>
+								<categoryID>[...]</categoryID>
+								[...]
+							</categoriesSet>
+						</alternativeAffectation>
+						[...]
+					</alternativesAffectations>
 				]]>
 			</xmcda>
         </output>

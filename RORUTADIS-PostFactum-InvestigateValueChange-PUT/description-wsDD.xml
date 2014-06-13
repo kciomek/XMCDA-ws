@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <program_description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.decision-deck.org/ws/_downloads/description.xsd">
-	<program provider="KC" name="RORUTADIS-PostFactum-InvestigatePerformanceImprovement" displayName="RORUTADIS-PostFactum-InvestigatePerformanceImprovement" version="0.1"/>
+	<program provider="PUT" name="RORUTADIS-PostFactum-InvestigateValueChange" displayName="RORUTADIS-PostFactum-InvestigateValueChange" version="0.1"/>
     
 	<documentation>         
-        <description>Robust Ordinal Regression for value-based sorting: RORUTADIS-PostFactum-InvestigatePerformanceImprovement service calculates minimal value (rho) by which alternative evaluations on selected criteria have to be multiplied for that alternative to be possibly (or necessarily) assigned to at least some specific class (rho &gt;= 1). Note! This function works for problems with only positive alternative evaluations It is possible to provide an additional optional preference information: example alternatives assignments, assignment pairwise comparisons and desired class cardinalities. Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>
+        <description>Robust Ordinal Regression for value-based sorting: RORUTADIS-PostFactum-InvestigateValueChange service calculates missing value of an alternative utility for that alternative to be possibly (or necessarily) assigned to at least some specific class. It is possible to provide an additional optional preference information: example alternatives assignments, assignment pairwise comparisons and desired class cardinalities. Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>
         <contact>
 			Krzysztof Ciomek (k.ciomek@gmail.com),
 			Milosz Kadzinski (milosz.kadzinski@cs.put.poznan.pl)
@@ -79,7 +79,7 @@
 		
 		<input id="necessary" name="necessary" displayName="necessary" isoptional="0">
 			<documentation>
-                <description>Whether necessary or possible assignments should be considered.</description>
+                <description>Whether necessary or possible assignment should be considered.</description>
 			</documentation>
 			<xmcda tag="methodParameters">
                 <![CDATA[
@@ -96,7 +96,7 @@
 			<gui status="preferGUI">
                 <entry id="%1" type="boolean" displayName="necessary">
                     <documentation>
-                        <description>Whether necessary or possible assignments to consider.</description>
+                        <description>Whether necessary or possible assignment to consider.</description>
                     </documentation>
                     <defaultValue>false</defaultValue>
                 </entry>
@@ -131,7 +131,7 @@
 		
 		<input id="alternative" name="alternative" displayName="alternative" isoptional="0">
 			<documentation>
-                <description>An alternative for assignment improvement.</description>
+                <description>An alternative for assignment investigation.</description>
 			</documentation>
 			<xmcda tag="methodParameters">
                 <![CDATA[
@@ -146,7 +146,7 @@
 			<gui status="preferGUI">
                 <entry id="%1" type="string" displayName="alternative">
                     <documentation>
-                        <description>An identifier of alternative for assignment improvement.</description>
+                        <description>An identifier of alternative for assignment investigation.</description>
                     </documentation>
                 </entry>
             </gui>
@@ -279,16 +279,100 @@
 
 		<output id="value" name="value" displayName="value">
             <documentation>
-                <description>Improvement value (value of rho).</description>
+                <description>Value of missing utility.</description>
             </documentation>
             <xmcda tag="alternativeValue">
 				<![CDATA[
-					<alternativeValue mcdaConcept="improvementValue">
+					<alternativeValue mcdaConcept="investigationResultValue">
 						<alternativeID>[...]</alternativeID>
 						<value>
 							<real>[...]</real>
 						</value>
 					</alternativeValue>
+				]]>
+			</xmcda>
+        </output>
+		
+		<output id="alternativesValuesTable" name="alternativesValuesTable" displayName="alternativesValuesTable">
+            <documentation>
+                <description>Marginal utility values of alternatives (for result function where missing utility is the smallest).</description>
+            </documentation>
+            <xmcda tag="performanceTable" />
+        </output>
+		<output id="marginalValueFunctions" name="marginalValueFunctions" displayName="marginalValueFunctions">
+            <documentation>
+                <description>Marginal value functions.</description>
+            </documentation>
+            <xmcda tag="criteria">
+				<![CDATA[
+					<criteria>
+						<criterion id="[...]">
+							<criterionFunction>
+								<points>
+									<point>
+										<abscissa><real>[...]</real></abscissa>
+										<ordinate><real>[...]</real></ordinate>
+									</point>
+									[...]
+								</points>
+							</criterionFunction>
+						</criterion>
+						[...]
+					</criteria>
+				]]>
+			</xmcda>
+        </output>
+		<output id="thresholds" name="thresholds" displayName="thresholds">
+            <documentation>
+                <description>Lower threshold for each category/class (for result function where missing utility is the smallest).</description>
+            </documentation>
+            <xmcda tag="categoriesValues">
+				<![CDATA[
+					<categoriesValues mcdaConcept="thresholds">
+						<categoryValue>
+							<categoryID>[...]</categoryID>
+							<value>
+								<real>[...]</real>
+							</value>
+						</categoryValue>
+						[...]
+					</categoriesValues>
+				]]>
+			</xmcda>
+        </output>
+		<output id="assignments" name="assignments" displayName="assignments">
+            <documentation>
+                <description>Alternative assignments (for result function where missing utility is the smallest).</description>
+            </documentation>
+            <xmcda tag="alternativesAffectations">
+				<![CDATA[
+					<alternativesAffectations>
+						<alternativeAffectation>
+							<alternativeID>[...]</alternativeID>
+							<categoryID>[...]</categoryID>
+						</alternativeAffectation>
+						[...]
+						<alternativeAffectation>
+							<alternativeID>[...]</alternativeID>
+							<categoriesInterval>
+								<lowerBound>
+									<categoryID>[...]</categoryID>
+								</lowerBound>
+								<upperBound>
+									<categoryID>[...]</categoryID>
+								</upperBound>
+							</categoriesInterval>
+						</alternativeAffectation>
+						[...]
+						<alternativeAffectation>
+							<alternativeID>[...]</alternativeID>
+							<categoriesSet>
+								<categoryID>[...]</categoryID>
+								[...]
+							</categoriesSet>
+						</alternativeAffectation>
+						[...]
+					</alternativesAffectations>
 				]]>
 			</xmcda>
         </output>
