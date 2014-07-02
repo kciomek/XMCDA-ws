@@ -3,7 +3,7 @@
 	<program provider="PUT" name="RORUTADIS-GroupAssignments" displayName="RORUTADIS-GroupAssignments" version="0.1"/>
     
 	<documentation>         
-        <description>This service allows to merge different assignments, e.g. from various decision makers (group result, group assignment). Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>
+        <description>This service allows for merging different assignments, e.g. from various decision makers (group result, group assignment). Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>
         <contact>
 			Krzysztof Ciomek (k.ciomek@gmail.com),
 			Milosz Kadzinski (milosz.kadzinski@cs.put.poznan.pl)
@@ -42,35 +42,9 @@
 			</xmcda>
 		</input>
 		
-		<input id="necessary" name="necessary" displayName="necessary" isoptional="0">
+		<input id="possibleAssignmentsDM1" name="possibleAssignmentsDM1" displayName="possibleAssignmentsDM1" isoptional="0">
 			<documentation>
-                <description>Method of merging. Necessary - alternative "a" will be assigned to class "C" in group result iff "a" is assigned to "C" for all decision makers, possible - alternative "a" will be assigned to class "C" in group result iff "a" is assigned to "C" for at least one decision maker.</description>
-			</documentation>
-			<xmcda tag="methodParameters">
-                <![CDATA[
-                    <methodParameters>
-                        <parameter name="necessary">
-                            <value>
-                                <boolean>%1</boolean>
-                            </value>
-                        </parameter>
-                    </methodParameters>
-                ]]>
-            </xmcda>
-			
-			<gui status="preferGUI">
-                <entry id="%1" type="boolean" displayName="necessary">
-                    <documentation>
-                        <description>Whether necessary or possible merge method.</description>
-                    </documentation>
-                    <defaultValue>true</defaultValue>
-                </entry>
-            </gui>
-		</input>
-		
-		<input id="assignments1" name="assignments1" displayName="assignments1" isoptional="0">
-			<documentation>
-                <description>Assignments to merge.</description>
+                <description>Possible assignments computed for Decision Maker 1.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations">
 				<![CDATA[
@@ -104,54 +78,101 @@
 				]]>
 			</xmcda>
 		</input>
-		<input id="assignments2" name="assignments2" displayName="assignments2" isoptional="1">
+		<input id="necessaryAssignmentsDM1" name="necessaryAssignmentsDM1" displayName="necessaryAssignmentsDM1" isoptional="0">
 			<documentation>
-                <description>Assignments to merge.</description>
+                <description>Necessary assignments computed for Decision Maker 1.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations" />
 		</input>
-		<input id="assignments3" name="assignments3" displayName="assignments3" isoptional="1">
+		<input id="possibleAssignmentsDM2" name="possibleAssignmentsDM2" displayName="possibleAssignmentsDM1" isoptional="defaultTrue">
 			<documentation>
-                <description>Assignments to merge.</description>
+                <description>Possible assignments computed for Decision Maker 2.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations" />
 		</input>
-		<input id="assignments4" name="assignments4" displayName="assignments4" isoptional="1">
+		<input id="necessaryAssignmentsDM2" name="necessaryAssignmentsDM2" displayName="necessaryAssignmentsDM2" isoptional="defaultTrue">
 			<documentation>
-                <description>Assignments to merge.</description>
+                <description>Necessary assignments computed for Decision Maker 2.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations" />
 		</input>
-		<input id="assignments5" name="assignments5" displayName="assignments5" isoptional="1">
+		<input id="possibleAssignmentsDM3" name="possibleAssignmentsDM3" displayName="possibleAssignmentsDM3" isoptional="defaultTrue">
 			<documentation>
-                <description>Assignments to merge.</description>
+                <description>Possible assignments computed for Decision Maker 3.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations" />
 		</input>
-		<input id="assignments6" name="assignments6" displayName="assignments6" isoptional="1">
+		<input id="necessaryAssignmentsDM3" name="necessaryAssignmentsDM3" displayName="necessaryAssignmentsDM3" isoptional="defaultTrue">
 			<documentation>
-                <description>Assignments to merge.</description>
+                <description>Necessary assignments computed for Decision Maker 3.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations" />
 		</input>
-		<input id="assignments7" name="assignments7" displayName="assignments7" isoptional="1">
+		
+		<input id="possibleAssignmentsDM4" name="possibleAssignmentsDM4" displayName="possibleAssignmentsDM4" isoptional="defaultFalse">
 			<documentation>
-                <description>Assignments to merge.</description>
+                <description>Possible assignments computed for Decision Maker 4.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations" />
 		</input>
-		<input id="assignments8" name="assignments8" displayName="assignments8" isoptional="1">
+		<input id="necessaryAssignmentsDM4" name="necessaryAssignmentsDM4" displayName="necessaryAssignmentsDM4" isoptional="defaultFalse">
 			<documentation>
-                <description>Assignments to merge.</description>
+                <description>Necessary assignments computed for Decision Maker 4.</description>
+			</documentation>
+			<xmcda tag="alternativesAffectations" />
+		</input>
+		<input id="possibleAssignmentsDM5" name="possibleAssignmentsDM5" displayName="possibleAssignmentsDM5" isoptional="defaultFalse">
+			<documentation>
+                <description>Possible assignments computed for Decision Maker 5.</description>
+			</documentation>
+			<xmcda tag="alternativesAffectations" />
+		</input>
+		<input id="necessaryAssignmentsDM5" name="necessaryAssignmentsDM5" displayName="necessaryAssignmentsDM5" isoptional="defaultFalse">
+			<documentation>
+                <description>Necessary assignments computed for Decision Maker 5.</description>
+			</documentation>
+			<xmcda tag="alternativesAffectations" />
+		</input>
+		<input id="possibleAssignmentsDM6" name="possibleAssignmentsDM6" displayName="possibleAssignmentsDM6" isoptional="defaultFalse">
+			<documentation>
+                <description>Possible assignments computed for Decision Maker 6.</description>
+			</documentation>
+			<xmcda tag="alternativesAffectations" />
+		</input>
+		<input id="necessaryAssignmentsDM6" name="necessaryAssignmentsDM6" displayName="necessaryAssignmentsDM6" isoptional="defaultFalse">
+			<documentation>
+                <description>Necessary assignments computed for Decision Maker 6.</description>
+			</documentation>
+			<xmcda tag="alternativesAffectations" />
+		</input>
+		<input id="possibleAssignmentsDM7" name="possibleAssignmentsDM7" displayName="possibleAssignmentsDM7" isoptional="defaultFalse">
+			<documentation>
+                <description>Possible assignments computed for Decision Maker 7.</description>
+			</documentation>
+			<xmcda tag="alternativesAffectations" />
+		</input>
+		<input id="necessaryAssignmentsDM7" name="necessaryAssignmentsDM7" displayName="necessaryAssignmentsDM7" isoptional="defaultFalse">
+			<documentation>
+                <description>Necessary assignments computed for Decision Maker 7.</description>
+			</documentation>
+			<xmcda tag="alternativesAffectations" />
+		</input>
+		<input id="possibleAssignmentsDM8" name="possibleAssignmentsDM8" displayName="possibleAssignmentsDM8" isoptional="defaultFalse">
+			<documentation>
+                <description>Possible assignments computed for Decision Maker 8.</description>
+			</documentation>
+			<xmcda tag="alternativesAffectations" />
+		</input>
+		<input id="necessaryAssignmentsDM8" name="necessaryAssignmentsDM8" displayName="necessaryAssignmentsDM8" isoptional="defaultFalse">
+			<documentation>
+                <description>Necessary assignments computed for Decision Maker 8.</description>
 			</documentation>
 			<xmcda tag="alternativesAffectations" />
 		</input>
 
-
-
-		<output id="assignments" name="assignments" displayName="assignments">
+		<output id="necessaryNecessaryAssignments" name="necessaryNecessaryAssignments" displayName="necessaryNecessaryAssignments">
             <documentation>
-                <description>Merged assignments.</description>
+                <description>Necessary-necessary assignments. An alternative is assigned to some class iff it is necessarily assigned to this class for all Decision Makers.</description>
             </documentation>
             <xmcda tag="alternativesAffectations">
 				<![CDATA[
@@ -184,6 +205,24 @@
 					</alternativesAffectations>
 				]]>
 			</xmcda>
+        </output>
+		<output id="necessaryPossibleAssignments" name="necessaryPossibleAssignments" displayName="necessaryPossibleAssignments">
+            <documentation>
+                <description>Necessary-possible assignments. An alternative is assigned to some class iff it is necessarily assigned to this class for at least one Decision Maker.</description>
+            </documentation>
+            <xmcda tag="alternativesAffectations" />
+        </output>
+		<output id="possibleNecessaryAssignments" name="possibleNecessaryAssignments" displayName="possibleNecessaryAssignments">
+            <documentation>
+                <description>Possible-necessary assignments. An alternative is assigned to some class iff it is possibly assigned to this class for all Decision Makers.</description>
+            </documentation>
+            <xmcda tag="alternativesAffectations" />
+        </output>
+		<output id="possiblePossibleAssignments" name="possiblePossibleAssignments" displayName="possiblePossibleAssignments">
+            <documentation>
+                <description>Possible-possible assignments. An alternative is assigned to some class iff it is possibly assigned to this class for at least one Decision Maker.</description>
+            </documentation>
+            <xmcda tag="alternativesAffectations" />
         </output>
 		<output id="messages" name="messages" displayName="messages">
             <documentation>
