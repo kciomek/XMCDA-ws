@@ -234,6 +234,7 @@ if (length(fileErrors) == 0) {
       investigationResult <- investigateUtility(which(alternativesIDs == alternative),
                                                 which(categoriesIDs == atLeastToClass),
                                                 necessary, problem)
+      investigationResultMatrix <- rbind(c(which(alternativesIDs == alternative), investigationResult$ux))
       thresholds <- c(0, getThresholds(problem, investigationResult$solution))
       thresholds <- cbind(1:nrCategories, thresholds)      
       alternativesUtilityTable <- getMarginalUtilities(problem, investigationResult$solution)
@@ -262,8 +263,8 @@ if (length(fileErrors) == 0) {
                  suppressNamespaceWarning = TRUE, 
                  namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), 
                  parent = tree)
-      putAlternativeValue(tree, investigationResult$ux, alternative, "investigationResultValue")
-      saveXML(tree, file = "value.xml")
+      putAlternativesValues(tree, investigationResultMatrix, alternativesIDs, "investigationResultValue")
+      saveXML(tree, file = "values.xml")
       
       tree <- newXMLDoc()
       newXMLNode("xmcda:XMCDA", 

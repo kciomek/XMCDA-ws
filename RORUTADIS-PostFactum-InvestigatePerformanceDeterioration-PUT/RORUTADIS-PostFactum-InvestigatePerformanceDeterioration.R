@@ -249,6 +249,7 @@ if (length(fileErrors) == 0) {
                                                    criteriaActivity,
                                                    necessary,
                                                    problem)
+      deteriorationResultMatrix <- rbind(c(which(alternativesIDs == alternative), deteriorationResult))
     })
     
     if (inherits(tmpErr, 'try-error')) {
@@ -265,8 +266,8 @@ if (length(fileErrors) == 0) {
                  suppressNamespaceWarning = TRUE, 
                  namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), 
                  parent = tree)
-      putAlternativeValue(tree, deteriorationResult, alternative, "deteriorationValue")
-      saveXML(tree, file = "value.xml")
+      putAlternativesValues(tree, deteriorationResultMatrix, alternativesIDs, "deteriorationValues")
+      saveXML(tree, file = "values.xml")
     }
   }
   else {
