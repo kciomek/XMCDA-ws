@@ -1,0 +1,1 @@
+R --slave --vanilla --args in3 out3 < ../RORUTADIS-GroupAssignments.R
