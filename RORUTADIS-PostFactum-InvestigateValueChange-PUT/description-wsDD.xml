@@ -277,21 +277,23 @@
 
 
 
-		<output id="value" name="value" displayName="value">
-            <documentation>
-                <description>Value of missing utility.</description>
-            </documentation>
-            <xmcda tag="alternativeValue">
+		<output id="values" name="values" displayName="values">
+			<documentation>
+				<description>Value of missing utility.</description>
+			</documentation>
+			<xmcda tag="alternativeValue">
 				<![CDATA[
-					<alternativeValue mcdaConcept="investigationResultValue">
-						<alternativeID>[...]</alternativeID>
-						<value>
-							<real>[...]</real>
-						</value>
-					</alternativeValue>
+					<alternativesValues mcdaConcept="investigationResultValue">
+						<alternativeValue>
+							<alternativeID>[...]</alternativeID>
+							<value>
+								<real>[...]</real>
+							</value>
+						</alternativeValue>
+					</alternativesValues>
 				]]>
 			</xmcda>
-        </output>
+		</output>
 		
 		<output id="alternativesValuesTable" name="alternativesValuesTable" displayName="alternativesValuesTable">
             <documentation>
