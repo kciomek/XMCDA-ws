@@ -114,7 +114,7 @@ if (length(fileErrors) == 0) {
   inputAffectations <- list()
   
   if (is.null(dataError)) {
-    for (i in 4:length(trees)) {
+    for (i in 3:length(trees)) {
       data <- getAlternativesAffectations(trees[[i]], alternativesIDs, categoriesIDs)
       if (data$status == "OK") {
         inputAffectations[[length(inputAffectations) + 1]] <- data[[1]]
@@ -125,7 +125,7 @@ if (length(fileErrors) == 0) {
       }
     }
   
-    names(inputAffectations) <- names(trees)[-c(1, 2, 3)]
+    names(inputAffectations) <- names(trees)[-c(1, 2)]
   }
   
   if (is.null(dataError)) {
@@ -134,7 +134,7 @@ if (length(fileErrors) == 0) {
         which(unlist(sapply(names(inputAffectations), function(name) { substr(name, 0, 9) == "necessary"} )))
       possibleAssignmentDataIds <-
         which(unlist(sapply(names(inputAffectations), function(name) { substr(name, 0, 8) == "possible"} )))
-      
+
       necessaryNecessaryAlternativesAffectations <-
         mergeAssignments(inputAffectations[necessaryAssignmentDataIds], TRUE)
       necessaryPossibleAlternativesAffectations <-
