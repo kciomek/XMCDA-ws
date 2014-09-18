@@ -14,6 +14,14 @@
     </alternativeAffectation>
     <alternativeAffectation>
       <alternativeID>a02</alternativeID>
+      <categoriesInterval>
+        <lowerBound>
+          <categoryID>c04</categoryID>
+        </lowerBound>
+        <upperBound>
+          <categoryID>c04</categoryID>
+        </upperBound>
+      </categoriesInterval>
     </alternativeAffectation>
     <alternativeAffectation>
       <alternativeID>a03</alternativeID>
