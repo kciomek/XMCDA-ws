@@ -277,11 +277,11 @@
 
 
 
-		<output id="values" name="values" displayName="values">
+		<output id="values" name="values" displayName="value">
 			<documentation>
 				<description>Value of missing utility.</description>
 			</documentation>
-			<xmcda tag="alternativeValue">
+			<xmcda tag="alternativesValues">
 				<![CDATA[
 					<alternativesValues mcdaConcept="investigationResultValue">
 						<alternativeValue>

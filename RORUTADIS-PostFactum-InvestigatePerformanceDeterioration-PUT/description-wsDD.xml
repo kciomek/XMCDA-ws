@@ -277,11 +277,11 @@
 
 
 
-		<output id="values" name="values" displayName="values">
+		<output id="values" name="values" displayName="deterioration value">
 			<documentation>
 				<description>Deterioration value (value of rho).</description>
 			</documentation>
-			<xmcda tag="alternativeValue">
+			<xmcda tag="alternativesValues">
 				<![CDATA[
 					<alternativesValues mcdaConcept="deteriorationValue">
 						<alternativeValue>
