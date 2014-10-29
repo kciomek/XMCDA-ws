@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <program_description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.decision-deck.org/ws/_downloads/description.xsd">
-	<program provider="PUT" name="RORUTADIS-PossibleAndNecessaryAssignments" displayName="RORUTADIS-PossibleAndNecessaryAssignments" version="0.1"/>
+	<program provider="PUT" name="RORUTADIS-StochasticResults" displayName="RORUTADIS-StochasticResults" version="0.1"/>
     
 	<documentation>
         <description>Calculates stochastic results for alternative assignments, assignment-based preference relation and class cardinalities. The results are computed by sampling the space of compatible models.
