@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <program_description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.decision-deck.org/ws/_downloads/description.xsd">
-	<program provider="PUT" name="RORUTADIS-PostFactum-InvestigatePerformanceDeterioration" displayName="RORUTADIS-PostFactum-InvestigatePerformanceDeterioration" version="0.2"/>
+	<program provider="PUT" name="RORUTADIS-PreferentialReducts" displayName="RORUTADIS-PreferentialReducts" version="0.1"/>
     
 	<documentation>         
-        <description>Robust Ordinal Regression for value-based sorting: RORUTADIS-PostFactum-InvestigatePerformanceDeterioration service checks how much an alternative evaluations can be deteriorated so that that alternative would stay possibly (or necessarily) in at least some specific class. Deterioration is based on minimization value of rho in multiplication of an alternative evaluations on selected criteria by rho (where 0 &lt; rho &lt;= 1). Note! This function works for problems with only non-negative alternative evaluations. It is possible to provide an additional optional preference information: example alternatives assignments, assignment pairwise comparisons and desired class cardinalities. Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>
+        <description>Robust Ordinal Regression for value-based sorting: RORUTADIS-PreferentialReducts service allows to obtain explanation of assignments. It finds all preferencial reducts and calculates preferencial core.</description>
         <contact>
 			Krzysztof Ciomek (k.ciomek@gmail.com),
 			Milosz Kadzinski (milosz.kadzinski@cs.put.poznan.pl)
@@ -77,32 +77,7 @@
 			<xmcda tag="performanceTable" />
 		</input>
 		
-		<input id="necessary" name="necessary" displayName="necessary" isoptional="0">
-			<documentation>
-                <description>Whether necessary or possible assignments should be considered.</description>
-			</documentation>
-			<xmcda tag="methodParameters">
-                <![CDATA[
-                    <methodParameters>
-                        <parameter name="necessary">
-                            <value>
-                                <boolean>%1</boolean>
-                            </value>
-                        </parameter>
-                    </methodParameters>
-                ]]>
-            </xmcda>
-			
-			<gui status="preferGUI">
-                <entry id="%1" type="boolean" displayName="necessary">
-                    <documentation>
-                        <description>Whether necessary or possible assignments to consider.</description>
-                    </documentation>
-                    <defaultValue>false</defaultValue>
-                </entry>
-            </gui>
-		</input>
-		<input id="strictlyMonotonicValueFunctions" name="strictlyMonotonicValueFunctions" displayName="strictlyMonotonicValueFunctions" isoptional="0">
+		<input id="methodParameters" name="methodParameters" displayName="methodParameters" isoptional="0">
 			<documentation>
                 <description>Whether marginal value functions strictly monotonic (true) or weakly monotonic (false).</description>
 			</documentation>
@@ -114,6 +89,11 @@
                                 <boolean>%1</boolean>
                             </value>
                         </parameter>
+						<parameter name="alternative">
+							<value>
+								<label>%2</label>
+							</value>
+						</parameter>
                     </methodParameters>
                 ]]>
             </xmcda>
@@ -125,72 +105,20 @@
                     </documentation>
                     <defaultValue>false</defaultValue>
                 </entry>
-            </gui>
-		</input>
-		
-		
-		<input id="alternative" name="alternative" displayName="alternative" isoptional="0">
-			<documentation>
-                <description>An alternative for assignment deterioration.</description>
-			</documentation>
-			<xmcda tag="methodParameters">
-                <![CDATA[
-                    <methodParameters>
-						<parameter name="alternative">
-							<value><label>%1</label></value>
-						</parameter>
-					</methodParameters>
-                ]]>
-            </xmcda>
-			
-			<gui status="preferGUI">
-                <entry id="%1" type="string" displayName="alternative">
+                <entry id="%2" type="string" displayName="alternative">
                     <documentation>
-                        <description>An identifier of alternative for assignment deterioration.</description>
+                        <description>An identifier of alternative for assignment to explain.</description>
                     </documentation>
                 </entry>
             </gui>
 		</input>
-		
-		<input id="atLeastToClass" name="atLeastToClass" displayName="atLeastToClass" isoptional="0">
+		<input id="possibleAssignments" name="possibleAssignments" displayName="possibleAssignments" isoptional="0">
 			<documentation>
-                <description>A category of assignment to investigate.</description>
+                <description>Possible assignments (calculated with RORUTADIS-PossibleAndNecessaryAssignments service).</description>
 			</documentation>
-			<xmcda tag="methodParameters">
-                <![CDATA[
-                    <methodParameters>
-						<parameter name="atLeastToClass">
-							<value><label>%1</label></value>
-						</parameter>
-					</methodParameters>
-                ]]>
-            </xmcda>
-			
-			<gui status="preferGUI">
-                <entry id="%1" type="string" displayName="atLeastToClass">
-                    <documentation>
-                        <description>An identifier of category of assignment to investigate.</description>
-                    </documentation>
-                </entry>
-            </gui>
+			<xmcda tag="alternativesAffectations" />
 		</input>
 		
-		<input id="criteriaManipulability" name="criteriaManipulability" displayName="criteriaManipulability" isoptional="0">
-			<documentation>
-                <description>A list of criteria values which denote whether multiplying by rho on corresponding criterion is allowed (value 1) or not (value 0). Values for all criteria have to be provided and at least one criterion has to be available for manipulation.</description>
-			</documentation>
-			<xmcda tag="criteriaValues">
-				<![CDATA[
-					<criteriaValues>
-						<criterionValue>
-							<criterionID>[...]</criterionID>
-							<value><integer>[0|1]</integer></value>
-						</criterionValue>
-						[...]
-					</criteriaValues>
-				]]>
-			</xmcda>
-		</input>
 		
 		<input id="assignmentExamples" name="assignmentExamples" displayName="assignmentExamples" isoptional="1">
 			<documentation>
@@ -276,24 +204,18 @@
 		</input>
 
 
-
-		<output id="values" name="values" displayName="deterioration value">
-			<documentation>
-				<description>Deterioration value (value of rho).</description>
-			</documentation>
-			<xmcda tag="alternativesValues">
-				<![CDATA[
-					<alternativesValues mcdaConcept="deteriorationValue">
-						<alternativeValue>
-							<alternativeID>[...]</alternativeID>
-							<value>
-								<real>[...]</real>
-							</value>
-						</alternativeValue>
-					</alternativesValues>
-				]]>
-			</xmcda>
-		</output>
+		<output id="preferencialReducts" name="preferencialReducts" displayName="preferencialReducts">
+            <documentation>
+                <description>All preferencial reducts. Each reduct consists of three types of information (alternative assignments, pairwise alternative comparisons and desired class cardinalities) and it is identified by a string stored in attribute 'id' of root level tags.</description>
+            </documentation>
+        </output>
+		
+		<output id="preferencialCore" name="preferencialCore" displayName="preferencialCore">
+            <documentation>
+                <description>Preferencial core.</description>
+            </documentation>
+        </output>
+		
 		<output id="messages" name="messages" displayName="messages">
             <documentation>
                 <description>Messages generated by the program.</description>

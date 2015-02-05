@@ -277,11 +277,11 @@
 
 
 
-		<output id="values" name="values" displayName="values">
+		<output id="values" name="values" displayName="improvement value">
 			<documentation>
 				<description>Improvement value (value of rho).</description>
 			</documentation>
-			<xmcda tag="alternativeValue">
+			<xmcda tag="alternativesValues">
 				<![CDATA[
 					<alternativesValues mcdaConcept="improvementValue">
 						<alternativeValue>
