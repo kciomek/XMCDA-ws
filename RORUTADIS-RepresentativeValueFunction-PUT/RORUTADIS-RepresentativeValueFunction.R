@@ -17,10 +17,9 @@ inputFiles <- c("alternatives.xml",
                 "assignmentExamples.xml",
                 "assignmentComparisons.xml",
                 "categoriesCardinalities.xml",
-                "strictlyMonotonicValueFunctions.xml",
-                "mode.xml",
+                "methodParameters.xml",
                 "preferenceRelation.xml")
-isMandatory <- c(T, T, T, T, F, F, F, T, T, F)
+isMandatory <- c(T, T, T, T, F, F, F, T, F)
 
 trees <- list()
 setwd(inDirectory)
@@ -189,13 +188,13 @@ if (length(fileErrors) == 0) {
   ############# parameters
   
   if (is.null(dataError)) {
-    data <- getParameters(trees$strictlyMonotonicValueFunctions, "strictlyMonotonicValueFunctions")
+    data <- getParameters(trees$methodParameters, "strictlyMonotonicValueFunctions")
     if (data$status == "OK") strictVF <- data[[1]]
     else dataError <- data$status
   }
   
   if (is.null(dataError)) {
-    data <- getParameters(trees$mode, "mode")
+    data <- getParameters(trees$methodParameters, "mode")
     if (data$status == "OK") {
       if (data[[1]] == "iterative") mode <- 0
       else if (data[[1]] == "compromise") mode <- 1

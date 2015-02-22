@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <program_description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.decision-deck.org/ws/_downloads/description.xsd">
-	<program provider="PUT" name="RORUTADIS-RepresentativeValueFunction" displayName="RORUTADIS-RepresentativeValueFunction" version="0.2"/>
+	<program provider="PUT" name="RORUTADIS-RepresentativeValueFunction" displayName="RORUTADIS-RepresentativeValueFunction" version="0.3"/>
     
 	<documentation>         
         <description>Robust Ordinal Regression for value-based sorting: RORUTADIS-RepresentativeValueFunction service finds representative function. It is possible to provide an additional optional preference information: example alternatives assignments, assignment pairwise comparisons and desired class cardinalities. Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>
@@ -77,9 +77,9 @@
 			<xmcda tag="performanceTable" />
 		</input>
 		
-		<input id="strictlyMonotonicValueFunctions" name="strictlyMonotonicValueFunctions" displayName="strictlyMonotonicValueFunctions" isoptional="0">
+		<input id="methodParameters" name="methodParameters" displayName="methodParameters" isoptional="0">
 			<documentation>
-                <description>Whether marginal value functions strictly monotonic (true) or weakly monotonic (false).</description>
+                <description>Method parameters.</description>
 			</documentation>
 			<xmcda tag="methodParameters">
                 <![CDATA[
@@ -87,6 +87,11 @@
                         <parameter name="strictlyMonotonicValueFunctions"> 
                             <value>
                                 <boolean>%1</boolean>
+                            </value>
+                        </parameter>
+                        <parameter name="mode">
+                            <value>
+                                <label>%2</label>
                             </value>
                         </parameter>
                     </methodParameters>
@@ -100,26 +105,7 @@
                     </documentation>
                     <defaultValue>false</defaultValue>
                 </entry>
-            </gui>
-		</input>
-		<input id="mode" name="mode" displayName="mode" isoptional="0">
-			<documentation>
-                <description>A method of a computing representative utility function: choose between "iterative" and "compromise".</description>
-			</documentation>
-			<xmcda tag="methodParameters">
-                <![CDATA[
-                    <methodParameters>
-                        <parameter name="mode">
-                            <value>
-                                <label>%1</label>
-                            </value>
-                        </parameter>
-                    </methodParameters>
-                ]]>
-            </xmcda>
-			
-			<gui status="preferGUI">
-                <entry id="%1" type="enum" displayName="mode">
+                <entry id="%2" type="enum" displayName="mode">
                     <documentation>
                         <description>A method of a computing representative utility function.</description>
                     </documentation>
