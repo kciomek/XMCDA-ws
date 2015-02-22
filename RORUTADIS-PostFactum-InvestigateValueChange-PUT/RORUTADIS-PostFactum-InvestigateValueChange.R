@@ -17,11 +17,8 @@ inputFiles <- c("alternatives.xml",
                 "assignmentExamples.xml",
                 "assignmentComparisons.xml",
                 "categoriesCardinalities.xml",
-                "necessary.xml",
-                "strictlyMonotonicValueFunctions.xml",
-                "alternative.xml",
-                "atLeastToClass.xml")
-isMandatory <- c(T, T, T, T, F, F, F, T, T, T, T)
+                "methodParameters.xml")
+isMandatory <- c(T, T, T, T, F, F, F, T)
 
 trees <- list()
 setwd(inDirectory)
@@ -180,25 +177,25 @@ if (length(fileErrors) == 0) {
   ############# parameters
   
   if (is.null(dataError)) {
-    data <- getParameters(trees$necessary, "necessary")
+    data <- getParameters(trees$methodParameters, "necessary")
     if (data$status == "OK") necessary <- data[[1]]
     else dataError <- data$status
   }
   
   if (is.null(dataError)) {
-    data <- getParameters(trees$strictlyMonotonicValueFunctions, "strictlyMonotonicValueFunctions")
+    data <- getParameters(trees$methodParameters, "strictlyMonotonicValueFunctions")
     if (data$status == "OK") strictVF <- data[[1]]
     else dataError <- data$status
   }
   
   if (is.null(dataError)) {
-    data <- getParameters(trees$alternative, "alternative")
+    data <- getParameters(trees$methodParameters, "alternative")
     if (data$status == "OK") alternative <- data[[1]]
     else dataError <- data$status
   }
   
   if (is.null(dataError)) {
-    data <- getParameters(trees$atLeastToClass, "atLeastToClass")
+    data <- getParameters(trees$methodParameters, "atLeastToClass")
     if (data$status == "OK") atLeastToClass <- data[[1]]
     else dataError <- data$status
   }
