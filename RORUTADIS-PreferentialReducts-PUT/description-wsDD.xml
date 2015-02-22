@@ -3,7 +3,7 @@
 	<program provider="PUT" name="RORUTADIS-PreferentialReducts" displayName="RORUTADIS-PreferentialReducts" version="0.1"/>
     
 	<documentation>         
-        <description>Robust Ordinal Regression for value-based sorting: RORUTADIS-PreferentialReducts service allows to obtain explanation of assignments. It finds all preferencial reducts and calculates preferencial core.</description>
+        <description>Robust Ordinal Regression for value-based sorting: RORUTADIS-PreferentialReducts service allows to obtain explanation of assignments. It finds all preferential reducts and calculates preferential core.</description>
         <contact>
 			Krzysztof Ciomek (k.ciomek@gmail.com),
 			Milosz Kadzinski (milosz.kadzinski@cs.put.poznan.pl)
@@ -204,15 +204,15 @@
 		</input>
 
 
-		<output id="preferencialReducts" name="preferencialReducts" displayName="preferencialReducts">
+		<output id="preferentialReducts" name="preferentialReducts" displayName="preferentialReducts">
             <documentation>
-                <description>All preferencial reducts. Each reduct consists of three types of information (alternative assignments, pairwise alternative comparisons and desired class cardinalities) and it is identified by a string stored in attribute 'id' of root level tags.</description>
+                <description>All preferential reducts. Each reduct consists of three types of information (alternative assignments, pairwise alternative comparisons and desired class cardinalities) and it is identified by a string stored in attribute 'id' of root level tags.</description>
             </documentation>
         </output>
 		
-		<output id="preferencialCore" name="preferencialCore" displayName="preferencialCore">
+		<output id="preferentialCore" name="preferentialCore" displayName="preferentialCore">
             <documentation>
-                <description>Preferencial core.</description>
+                <description>preferential core.</description>
             </documentation>
         </output>
 		
