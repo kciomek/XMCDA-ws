@@ -130,28 +130,6 @@
             </gui>
 		</input>
 		
-		<input id="atLeastToClass" name="atLeastToClass" displayName="atLeastToClass" isoptional="0">
-			<documentation>
-                <description>A category of assignment to investigate.</description>
-			</documentation>
-			<xmcda tag="methodParameters">
-                <![CDATA[
-                    <methodParameters>
-						<parameter name="atLeastToClass">
-							<value><label>%1</label></value>
-						</parameter>
-					</methodParameters>
-                ]]>
-            </xmcda>
-			
-			<gui status="preferGUI">
-                <entry id="%1" type="string" displayName="atLeastToClass">
-                    <documentation>
-                        <description>An identifier of category of assignment to investigate.</description>
-                    </documentation>
-                </entry>
-            </gui>
-		</input>
 		
 		<input id="criteriaManipulability" name="criteriaManipulability" displayName="criteriaManipulability" isoptional="0">
 			<documentation>
