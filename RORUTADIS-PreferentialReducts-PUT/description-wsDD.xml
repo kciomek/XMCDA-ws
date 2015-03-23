@@ -205,12 +205,14 @@
 
 
 		<output id="preferentialReducts" name="preferentialReducts" displayName="preferentialReducts">
+			<xmcda tag="alternativesAffectations,alternativesComparisons,categoriesValues"/>
             <documentation>
                 <description>All preferential reducts. Each reduct consists of three types of information (alternative assignments, pairwise alternative comparisons and desired class cardinalities) and it is identified by a string stored in attribute 'id' of root level tags.</description>
             </documentation>
         </output>
 		
 		<output id="preferentialCore" name="preferentialCore" displayName="preferentialCore">
+			<xmcda tag="alternativesAffectations,alternativesComparisons,categoriesValues"/>
             <documentation>
                 <description>preferential core.</description>
             </documentation>
