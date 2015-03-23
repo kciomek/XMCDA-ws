@@ -7,5 +7,14 @@
 		<parameter name="strictlyMonotonicValueFunctions">
 			<value><boolean>false</boolean></value>
 		</parameter>
+		<parameter name="alternative">
+			<value><label>a08</label></value>
+		</parameter>
+		<parameter name="necessary">
+			<value><boolean>false</boolean></value>
+		</parameter>
+		<parameter name="atLeastToClass">
+			<value><label>c04</label></value>
+		</parameter>
 	</methodParameters>
 </xmcda:XMCDA>

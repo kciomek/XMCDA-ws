@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <program_description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.decision-deck.org/ws/_downloads/description.xsd">
-	<program provider="PUT" name="RORUTADIS-PostFactum-InvestigatePerformanceDeterioration" displayName="RORUTADIS-PostFactum-InvestigatePerformanceDeterioration" version="0.2"/>
+	<program provider="PUT" name="RORUTADIS-PostFactum-InvestigatePerformanceDeterioration" displayName="RORUTADIS-PostFactum-InvestigatePerformanceDeterioration" version="0.3"/>
     
 	<documentation>         
         <description>Robust Ordinal Regression for value-based sorting: RORUTADIS-PostFactum-InvestigatePerformanceDeterioration service checks how much an alternative evaluations can be deteriorated so that that alternative would stay possibly (or necessarily) in at least some specific class. Deterioration is based on minimization value of rho in multiplication of an alternative evaluations on selected criteria by rho (where 0 &lt; rho &lt;= 1). Note! This function works for problems with only non-negative alternative evaluations. It is possible to provide an additional optional preference information: example alternatives assignments, assignment pairwise comparisons and desired class cardinalities. Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>
@@ -77,34 +77,9 @@
 			<xmcda tag="performanceTable" />
 		</input>
 		
-		<input id="necessary" name="necessary" displayName="necessary" isoptional="0">
+		<input id="methodParameters" name="methodParameters" displayName="methodParameters" isoptional="0">
 			<documentation>
-                <description>Whether necessary or possible assignments should be considered.</description>
-			</documentation>
-			<xmcda tag="methodParameters">
-                <![CDATA[
-                    <methodParameters>
-                        <parameter name="necessary">
-                            <value>
-                                <boolean>%1</boolean>
-                            </value>
-                        </parameter>
-                    </methodParameters>
-                ]]>
-            </xmcda>
-			
-			<gui status="preferGUI">
-                <entry id="%1" type="boolean" displayName="necessary">
-                    <documentation>
-                        <description>Whether necessary or possible assignments to consider.</description>
-                    </documentation>
-                    <defaultValue>false</defaultValue>
-                </entry>
-            </gui>
-		</input>
-		<input id="strictlyMonotonicValueFunctions" name="strictlyMonotonicValueFunctions" displayName="strictlyMonotonicValueFunctions" isoptional="0">
-			<documentation>
-                <description>Whether marginal value functions strictly monotonic (true) or weakly monotonic (false).</description>
+                <description>Method parameters.</description>
 			</documentation>
 			<xmcda tag="methodParameters">
                 <![CDATA[
@@ -114,6 +89,17 @@
                                 <boolean>%1</boolean>
                             </value>
                         </parameter>
+						<parameter name="alternative">
+							<value><label>%2</label></value>
+						</parameter>
+                        <parameter name="necessary">
+                            <value>
+                                <boolean>%3</boolean>
+                            </value>
+                        </parameter>
+						<parameter name="atLeastToClass">
+							<value><label>%4</label></value>
+						</parameter>
                     </methodParameters>
                 ]]>
             </xmcda>
@@ -125,49 +111,18 @@
                     </documentation>
                     <defaultValue>false</defaultValue>
                 </entry>
-            </gui>
-		</input>
-		
-		
-		<input id="alternative" name="alternative" displayName="alternative" isoptional="0">
-			<documentation>
-                <description>An alternative for assignment deterioration.</description>
-			</documentation>
-			<xmcda tag="methodParameters">
-                <![CDATA[
-                    <methodParameters>
-						<parameter name="alternative">
-							<value><label>%1</label></value>
-						</parameter>
-					</methodParameters>
-                ]]>
-            </xmcda>
-			
-			<gui status="preferGUI">
-                <entry id="%1" type="string" displayName="alternative">
+                <entry id="%2" type="string" displayName="alternative">
                     <documentation>
                         <description>An identifier of alternative for assignment deterioration.</description>
                     </documentation>
                 </entry>
-            </gui>
-		</input>
-		
-		<input id="atLeastToClass" name="atLeastToClass" displayName="atLeastToClass" isoptional="0">
-			<documentation>
-                <description>A category of assignment to investigate.</description>
-			</documentation>
-			<xmcda tag="methodParameters">
-                <![CDATA[
-                    <methodParameters>
-						<parameter name="atLeastToClass">
-							<value><label>%1</label></value>
-						</parameter>
-					</methodParameters>
-                ]]>
-            </xmcda>
-			
-			<gui status="preferGUI">
-                <entry id="%1" type="string" displayName="atLeastToClass">
+                <entry id="%3" type="boolean" displayName="necessary">
+                    <documentation>
+                        <description>Whether necessary or possible assignments to consider.</description>
+                    </documentation>
+                    <defaultValue>false</defaultValue>
+                </entry>
+                <entry id="%4" type="string" displayName="atLeastToClass">
                     <documentation>
                         <description>An identifier of category of assignment to investigate.</description>
                     </documentation>

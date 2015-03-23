@@ -273,7 +273,7 @@ if (length(fileErrors) == 0) {
           id <- ""
           root <- xmlRoot(coreTree)
         } else {
-          id <- paste("preferencialReduct_", i - 1, sep = "")
+          id <- paste("preferentialReduct_", i - 1, sep = "")
           root <- xmlRoot(reductsTree)
         }
         
@@ -362,8 +362,8 @@ if (length(fileErrors) == 0) {
         }
       }
       
-      saveXML(reductsTree, file = "preferencialReducts.xml")
-      saveXML(coreTree, file = "preferencialCore.xml")
+      saveXML(reductsTree, file = "preferentialReducts.xml")
+      saveXML(coreTree, file = "preferentialCore.xml")
     }
   }
   else {
