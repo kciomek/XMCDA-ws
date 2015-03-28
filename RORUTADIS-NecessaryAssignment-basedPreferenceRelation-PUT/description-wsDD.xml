@@ -188,7 +188,7 @@
 
 
 
-		<output id="assignmentComparisons" name="assignmentComparisons" displayName="assignmentComparisons">
+		<output id="assignmentComparisons-out" name="assignmentComparisons" displayName="assignmentComparisons">
             <documentation>
                 <description>Necessary assignment comparisons. This output is compatible with assignmentComparisons input for various RORUTADIS-... services. Possible to visualize with HasseDiagram service.</description>
             </documentation>

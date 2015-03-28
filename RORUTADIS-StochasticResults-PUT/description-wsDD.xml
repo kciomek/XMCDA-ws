@@ -189,7 +189,7 @@
                     </documentation>
                     <defaultValue>false</defaultValue>
                 </entry>
-                <entry id="%2" type="integer" displayName="numberOfSamples">
+                <entry id="%2" type="int" displayName="numberOfSamples">
                     <documentation>
                         <description>Number of samples.</description>
                     </documentation>

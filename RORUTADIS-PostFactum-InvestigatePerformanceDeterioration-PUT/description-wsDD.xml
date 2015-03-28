@@ -115,6 +115,10 @@
                     <documentation>
                         <description>An identifier of alternative for assignment deterioration.</description>
                     </documentation>
+                    <constraint>
+		      <description>This identifier cannot be empty</description>
+		      <code>! %2.isEmpty()</code>
+		    </constraint>
                 </entry>
                 <entry id="%3" type="boolean" displayName="necessary">
                     <documentation>
@@ -125,6 +129,10 @@
                 <entry id="%4" type="string" displayName="atLeastToClass">
                     <documentation>
                         <description>An identifier of category of assignment to investigate.</description>
+                    <constraint>
+		      <description>This identifier cannot be empty</description>
+		      <code>! %4.isEmpty()</code>
+		    </constraint>
                     </documentation>
                 </entry>
             </gui>

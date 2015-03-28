@@ -115,6 +115,10 @@
                     <documentation>
                         <description>An identifier of alternative for assignment investigation.</description>
                     </documentation>
+                    <constraint>
+                      <description>This identifier cannot be empty</description>
+                      <code>! %2.isEmpty()</code>
+                    </constraint>
                 </entry>
                 <entry id="%3" type="boolean" displayName="necessary">
                     <documentation>
@@ -126,48 +130,12 @@
                     <documentation>
                         <description>An identifier of category of assignment to investigate.</description>
                     </documentation>
+                    <constraint>
+                      <description>This identifier cannot be empty</description>
+                      <code>! %4.isEmpty()</code>
+                    </constraint>
                 </entry>
             </gui>
-		</input>
-		
-		<input id="atLeastToClass" name="atLeastToClass" displayName="atLeastToClass" isoptional="0">
-			<documentation>
-                <description>A category of assignment to investigate.</description>
-			</documentation>
-			<xmcda tag="methodParameters">
-                <![CDATA[
-                    <methodParameters>
-						<parameter name="atLeastToClass">
-							<value><label>%1</label></value>
-						</parameter>
-					</methodParameters>
-                ]]>
-            </xmcda>
-			
-			<gui status="preferGUI">
-                <entry id="%1" type="string" displayName="atLeastToClass">
-                    <documentation>
-                        <description>An identifier of category of assignment to investigate.</description>
-                    </documentation>
-                </entry>
-            </gui>
-		</input>
-		
-		<input id="criteriaManipulability" name="criteriaManipulability" displayName="criteriaManipulability" isoptional="0">
-			<documentation>
-                <description>A list of criteria values which denote whether multiplying by rho on corresponding criterion is allowed (value 1) or not (value 0). Values for all criteria have to be provided and at least one criterion has to be available for manipulation.</description>
-			</documentation>
-			<xmcda tag="criteriaValues">
-				<![CDATA[
-					<criteriaValues>
-						<criterionValue>
-							<criterionID>[...]</criterionID>
-							<value><integer>[0|1]</integer></value>
-						</criterionValue>
-						[...]
-					</criteriaValues>
-				]]>
-			</xmcda>
 		</input>
 		
 		<input id="assignmentExamples" name="assignmentExamples" displayName="assignmentExamples" isoptional="1">
