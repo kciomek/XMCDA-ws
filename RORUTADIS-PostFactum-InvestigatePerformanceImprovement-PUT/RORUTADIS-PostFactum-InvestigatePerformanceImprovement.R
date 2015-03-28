@@ -208,6 +208,20 @@ if (length(fileErrors) == 0) {
   }
   
   if (is.null(dataError)) {
+    if (alternative == "") {
+      dataError <- paste("Parameter 'alternative' is empty. Please change it.", sep="")
+    } else if (!alternative %in% alternativesIDs) {
+      dataError <- paste("There is no alternative with id '", alternative,
+                         "'. Please change parameter 'alternative'.", sep="")
+    } else if (atLeastToClass == "") {
+      dataError <- paste("Parameter 'atLeastToClass' is empty. Please change it.", sep="")
+    } else if (!atLeastToClass %in% categoriesIDs) {
+      dataError <- paste("There is no category with id '", atLeastToClass,
+                         "'. Please change parameter 'atLeastToClass'.", sep="")
+    }
+  }
+  
+  if (is.null(dataError)) {
     tmpErr <- try({
       problem <- buildProblem(performanceTables, nrCategories, strictVF,
                               criteriaPreferenceDirections, characteristicPoints)

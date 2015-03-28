@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmcda:XMCDA xmlns:xmcda="http://www.decision-deck.org/2009/XMCDA-2.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.decision-deck.org/2009/XMCDA-2.0.0
+  http://www.decision-deck.org/xmcda/_downloads/XMCDA-2.0.0.xsd">
+
+  <criteria>
+    <criterion id="g01"/>
+    <criterion id="g02"/>
+  </criteria>
+  
+  <criteriaValues mcdaConcept="preferenceDirection">
+	<criterionValue>
+		<criterionID>g01</criterionID>
+		<value><integer>0</integer></value>
+	</criterionValue>
+	<criterionValue>
+		<criterionID>g02</criterionID>
+		<value><integer>0</integer></value>
+	</criterionValue>
+  </criteriaValues>
+  
+  <criteriaValues mcdaConcept="numberOfCharacteristicPoints">
+	<criterionValue>
+		<criterionID>g01</criterionID>
+		<value><integer>3</integer></value>
+	</criterionValue>
+	<criterionValue>
+		<criterionID>g02</criterionID>
+		<value><integer>2</integer></value>
+	</criterionValue>
+  </criteriaValues>
+  
+</xmcda:XMCDA>
+
