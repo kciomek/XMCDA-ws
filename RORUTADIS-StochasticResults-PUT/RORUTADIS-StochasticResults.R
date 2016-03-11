@@ -191,6 +191,16 @@ if (length(fileErrors) == 0) {
   }
   
   if (is.null(dataError)) {
+    data <- getParameters(trees$methodParameters, "seed")
+    if (data$status == "OK") seed <- data[[1]]
+    else dataError <- data$status
+  }
+  
+  if (seed != 0) {
+    set.seed(seed)
+  }
+  
+  if (is.null(dataError)) {
     tmpErr <- try({
       problem <- buildProblem(performanceTables, nrCategories, strictVF,
                               criteriaPreferenceDirections, characteristicPoints)

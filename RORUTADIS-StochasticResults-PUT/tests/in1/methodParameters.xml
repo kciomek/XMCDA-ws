@@ -10,5 +10,8 @@
 		<parameter name="numberOfSamples">
 			<value><integer>100</integer></value>
 		</parameter>
+		<parameter name="seed">
+			<value><integer>1</integer></value>
+		</parameter>
 	</methodParameters>
 </xmcda:XMCDA>

@@ -5,22 +5,22 @@
       <categoryID>c01</categoryID>
       <values>
         <value>
-          <real>0.65</real>
+          <real>0.59</real>
         </value>
         <value>
-          <real>0.28</real>
+          <real>0.15</real>
+        </value>
+        <value>
+          <real>0.15</real>
+        </value>
+        <value>
+          <real>0.08</real>
         </value>
         <value>
           <real>0.03</real>
         </value>
         <value>
-          <real>0.01</real>
-        </value>
-        <value>
-          <real>0.01</real>
-        </value>
-        <value>
-          <real>0.02</real>
+          <real>0</real>
         </value>
         <value>
           <real>0</real>
@@ -37,22 +37,22 @@
       <categoryID>c02</categoryID>
       <values>
         <value>
-          <real>0.55</real>
+          <real>0.31</real>
         </value>
         <value>
-          <real>0.35</real>
+          <real>0.31</real>
         </value>
         <value>
-          <real>0.08</real>
+          <real>0.18</real>
         </value>
         <value>
-          <real>0.02</real>
+          <real>0.14</real>
         </value>
         <value>
-          <real>0</real>
+          <real>0.05</real>
         </value>
         <value>
-          <real>0</real>
+          <real>0.01</real>
         </value>
         <value>
           <real>0</real>
@@ -72,28 +72,28 @@
           <real>0</real>
         </value>
         <value>
-          <real>0.39</real>
+          <real>0.05</real>
         </value>
         <value>
-          <real>0.27</real>
+          <real>0.16</real>
         </value>
         <value>
-          <real>0.18</real>
+          <real>0.35</real>
         </value>
         <value>
-          <real>0.11</real>
+          <real>0.17</real>
         </value>
         <value>
-          <real>0.01</real>
+          <real>0.12</real>
         </value>
         <value>
-          <real>0.04</real>
+          <real>0.08</real>
         </value>
         <value>
-          <real>0</real>
+          <real>0.05</real>
         </value>
         <value>
-          <real>0</real>
+          <real>0.02</real>
         </value>
       </values>
     </categoryValue>
@@ -101,28 +101,28 @@
       <categoryID>c04</categoryID>
       <values>
         <value>
-          <real>0.06</real>
+          <real>0.17</real>
+        </value>
+        <value>
+          <real>0.25</real>
+        </value>
+        <value>
+          <real>0.05</real>
+        </value>
+        <value>
+          <real>0.35</real>
+        </value>
+        <value>
+          <real>0.15</real>
         </value>
         <value>
           <real>0.02</real>
         </value>
         <value>
-          <real>0.07</real>
+          <real>0.01</real>
         </value>
         <value>
-          <real>0.13</real>
-        </value>
-        <value>
-          <real>0.09</real>
-        </value>
-        <value>
-          <real>0.07</real>
-        </value>
-        <value>
-          <real>0.46</real>
-        </value>
-        <value>
-          <real>0.1</real>
+          <real>0</real>
         </value>
         <value>
           <real>0</real>
