@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <program_description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.decision-deck.org/ws/_downloads/description.xsd">
-	<program provider="PUT" name="RORUTADIS-GroupAssignments" displayName="RORUTADIS-GroupAssignments" version="0.1"/>
+	<program provider="PUT" name="RORUTADIS-GroupAssignments" displayName="RORUTADIS-GroupAssignments" version="0.2"/>
     
 	<documentation>         
         <description>This service allows for merging different assignments, e.g. from various decision makers (group result, group assignment). Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>

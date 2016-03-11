@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <program_description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.decision-deck.org/ws/_downloads/description.xsd">
-	<program provider="PUT" name="RORUTADIS-PreferentialReducts" displayName="RORUTADIS-PreferentialReducts" version="0.1"/>
+	<program provider="PUT" name="RORUTADIS-PreferentialReducts" displayName="RORUTADIS-PreferentialReducts" version="0.2"/>
     
 	<documentation>         
         <description>Robust Ordinal Regression for value-based sorting: RORUTADIS-PreferentialReducts service allows to obtain explanation of assignments. It finds all preferential reducts and calculates preferential core.</description>

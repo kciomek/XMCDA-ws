@@ -6,6 +6,9 @@ rm(list=ls())
 library(rorutadis)
 library(RXMCDA)
 
+stopifnot(packageVersion("rorutadis") >= "0.3.1") # rorutadis in version 0.3.1 or later is required
+
+
 inDirectory <- normalizePath(commandArgs()[5])
 outDirectory <- normalizePath(commandArgs()[6])
 errorMessage <- NULL

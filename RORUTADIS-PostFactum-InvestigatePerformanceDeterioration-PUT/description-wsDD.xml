@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <program_description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.decision-deck.org/ws/_downloads/description.xsd">
-	<program provider="PUT" name="RORUTADIS-PostFactum-InvestigatePerformanceDeterioration" displayName="RORUTADIS-PostFactum-InvestigatePerformanceDeterioration" version="0.3"/>
+	<program provider="PUT" name="RORUTADIS-PostFactum-InvestigatePerformanceDeterioration" displayName="RORUTADIS-PostFactum-InvestigatePerformanceDeterioration" version="0.4"/>
     
 	<documentation>         
         <description>Robust Ordinal Regression for value-based sorting: RORUTADIS-PostFactum-InvestigatePerformanceDeterioration service checks how much an alternative evaluations can be deteriorated so that that alternative would stay possibly (or necessarily) in at least some specific class. Deterioration is based on minimization value of rho in multiplication of an alternative evaluations on selected criteria by rho (where 0 &lt; rho &lt;= 1). Note! This function works for problems with only non-negative alternative evaluations. It is possible to provide an additional optional preference information: example alternatives assignments, assignment pairwise comparisons and desired class cardinalities. Service developed by Krzysztof Ciomek (Poznan University of Technology, under supervision of Milosz Kadzinski).</description>
